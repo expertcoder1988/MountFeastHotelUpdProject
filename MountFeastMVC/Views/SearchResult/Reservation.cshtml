@@ -1,0 +1,603 @@
+﻿@using MountFeastMVC.Models;
+
+@{
+    ViewBag.Title = "Mount Feast Hotel  at Naran| Rooms Booking";
+    ViewBag.keywords = "Hotel at Murree";
+
+    ViewBag.Description = "Mount Feast Hotel  at Naran is the best place to stay. Our hotel in Islamabad, Naran, Skardu Pakistan offers luxurious rooms, equipped with all the amenities. Book Online.";
+
+
+    List<MountFeastMVC.Models.PropertySearch> results = new List<MountFeastMVC.Models.PropertySearch>();
+    MountFeastMVC.Models.RoomDetails result = (MountFeastMVC.Models.RoomDetails)ViewBag.room;
+
+    int? TotalAmount = 0;
+    List<MountFeastMVC.Models.Pictures> roomPictures = (List<MountFeastMVC.Models.Pictures>)TempData["roomPictures"];
+    //var pics = roomPictures.Select(x => x.title).ToList()
+    DateTime _CheckIn = DateTime.Now;
+    DateTime _CheckOut = DateTime.Now;
+    int? _RoomCatCode = 0;
+    int? _adults = 0;
+    int? _children = 0;
+    int? _NoOfRooms = 0;
+    int? _adultsRate = 0;
+    int? _childrenRate = 0;
+    int? roomPrice = 0;
+
+    int? _TotalPax = 0;
+
+    string _roomCateRoomNums = ViewBag.RoomCateRoomNums;
+    string RatePlanIDs = ViewBag.RatePlanIDs;
+    string RoomRates = ViewBag.RoomRates;
+
+    long TotalAmmount = ViewBag.TotalAmount;
+    long TotalTax = ViewBag.TotalTax;
+    long AmountWithOutTaxes = TotalAmmount - TotalTax;
+    long DiscountedAmount = AmountWithOutTaxes;
+    //long TotalAmmount = ViewBag.TotalAmount;
+    //long Taxes = ViewBag.TaxAmount;
+    //long AmountWithOutTaxes = Convert.ToInt32(TotalAmmount);
+    ////long AmountWithOutTaxes = TotalAmmount;
+    // TotalAmmount = TotalAmmount + TotalTax;
+
+
+    List<MountFeastMVC.Controllers.BookedRooms> brList = new List<MountFeastMVC.Controllers.BookedRooms>();
+
+    string[] RoomCateRoomNums;
+    string _RoomCateRoomNums = ViewBag.RoomCateRoomNums;
+    RoomCateRoomNums = _RoomCateRoomNums.Split(',');
+
+    string[] RoomCates;
+    string _rooomCate = ViewBag.RoomCatCodes;
+    RoomCates = _rooomCate.Split(',');
+    string roomCate = "";
+    var db = new HotelDBEntities();
+
+    if (RoomCates.Length > 0)
+    {
+        for (int i = 0; i < RoomCates.Length; i++)
+        {
+            int rc = 0;
+            if (RoomCates[i] != "")
+            {
+                rc = Convert.ToInt32(_rooomCate);
+
+                roomCate = db.RoomCategories.Where(x => x.Id == rc).Select(x => x.Category).FirstOrDefault();
+                MountFeastMVC.Controllers.BookedRooms br = new MountFeastMVC.Controllers.BookedRooms();
+
+                br.RoomCate = roomCate;
+                br.Quantity = Convert.ToInt32(_RoomCateRoomNums);
+
+                brList.Add(br);
+            }
+
+
+        }
+    }
+
+    if (Session["results"] != null)
+    {
+
+        _adults = ViewBag.Adults;
+        _children = ViewBag.Children;
+        _NoOfRooms = ViewBag.NoOfRooms;
+        results = (List<MountFeastMVC.Models.PropertySearch>)Session["results"];
+
+        _TotalPax = _adults + _children;
+
+        if (_TotalPax == 0)
+        {
+            _TotalPax = 1;
+        }
+
+        TotalAmount = ViewBag.TotalAmount; ; //results.Where(x => x.RoomCateCode == result.RoomCategoryId).Select(x => x.TotalAmount).FirstOrDefault();
+                                             // string[] sDate = ViewBag.checkIn;
+                                             // string startDate = ViewBag.checkIn; // sDate[1] + "/" + sDate[0] + "/" + sDate[2];
+
+        //sDate = ViewBag.TotalAmount;
+        //string endDate = sDate[1] + "/" + sDate[0] + "/" + sDate[2];
+
+        _CheckIn = ViewBag.checkIn; // Convert.ToDateTime(startDate);
+        _CheckOut = ViewBag.checkOut; // Convert.ToDateTime(endDate);
+                                      // _RoomCatCode = result.RoomCategoryId;
+
+
+    }
+    int totalDays = (int)(_CheckOut - _CheckIn).TotalDays;
+}
+
+<div class="sub-banner overview-bgi">
+    <div class="overlay">
+        <div class="container">
+            <div class="breadcrumb-area">
+                <h1>Booking Form</h1>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="properties-details-page" style="padding-top:30px">
+
+    <div class="container">
+        @*<div class="py-5 text-center">
+                <h2>Booking Form</h2>
+            </div>*@
+
+        <div class="row m-2">
+
+            <div class="col-md-6">
+                <h4 class="mb-3">Personal Information</h4>
+
+                @using (Html.BeginForm("SaveBooking", "SearchResult", FormMethod.Post, new { @class = "needs-validation", id = "myForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+
+                            <select class="form-control reservation_form mt-2" name="PaxTitle" id="PaxTitle">
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Miss">Miss</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5 mb-3">
+
+                            <input type="text"
+                                   class="form-control reservation_form mt-2"
+                                   id="PaxFName" name="PaxFName"
+                                   placeholder="First Name *"
+                                   value=""
+                                   required />
+                            <div class="invalid-feedback">Valid first name is required.</div>
+                        </div>
+                        <div class="col-md-5 mb-3">
+
+                            <input type="text"
+                                   class="form-control reservation_form mt-2"
+                                   id="PaxLName" name="PaxLName"
+                                   placeholder="Last Name *"
+                                   value=""
+                                   required />
+                            <div class="invalid-feedback">Valid last name is required.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+
+                            <input type="email"
+                                   class="form-control reservation_form mt-2"
+                                   id="PaxEmail"
+                                   name="PaxEmail"
+                                   placeholder="you@example.com" />
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for booking updates.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <input type="text"
+                                   class="form-control reservation_form mt-2"
+                                   id="PaxPhoneNumber" name="PaxPhoneNumber"
+                                   placeholder="+92-3xxxxxxxxx"
+                                   required />
+                            <div class="invalid-feedback">Please enter your phone number.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input id="voucherCode" class="form-control reservation_form mt-2" name="Code" type="text" placeholder="Coupon">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating mb-4 d-flex gap-2">
+                                <button id="applyVoucherBtn" type="button" class="btn btn-dark" style="width: 200px; height: 40px; font-size: 16px;" onclick="applyVoucher()">
+                                    <span id="voucherIcon" style="margin-right: 8px;"></span>
+                                    Apply
+                                </button>
+
+                                <button id="removeVoucherBtn" type="button" class="btn btn-outline-danger" style="width: 200px; height: 40px; font-size: 16px;" onclick="removeVoucher()" disabled>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3">
+
+                                <input type="text" id="PaxDescription" name="PaxDescription" placeholder="Special Message" class="form-control reservation_form mt-2" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Bootstrap CSS in your <head> -->
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+                    <!-- Hidden input to store selected payment type -->
+                    <input type="hidden" name="PaymentType" id="PaymentType" value="2" />
+
+                    <div class="payment-section">
+                        <h2 class="payment-title mb-4">Payment Method</h2>
+
+                        <div class="row position-relative">
+                            <!-- Online Payment Card -->
+                            <div class="col-md-6 col-sm-12 mb-3">
+                                <div class="payment-card rounded p-4 h-100 selectable selected"
+                                     onclick="setPaymentType(this, 2)">
+                                    <div class="checkmark"><span class="text-white fw-bold">✓</span></div>
+                                    <h5 class="mb-3">Online Payment</h5>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <img src="~/Content/Assets/img/brand/mastercard.svg" alt="MasterCard" class="payment-icon">
+                                        <img src="~/Content/Assets/img/brand/visa.svg" alt="Visa" class="payment-icon">
+                                        <img src="~/Content/Assets/img/brand/easypaisa.svg" alt="Easypaisa" class="payment-icon">
+                                        <img src="~/Content/Assets/img/brand/Jazzcash.svg" alt="JazzCash" class="payment-icon">
+                                        <img src="~/Content/Assets/img/brand/upasia.svg" alt="Upaisa" class="payment-icon">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Deposit Card -->
+                            <div class="col-md-6 col-sm-12 mb-3">
+                                <div class="payment-card rounded p-4 h-100 selectable"
+                                     onclick="setPaymentType(this, 1)">
+                                    <div class="checkmark d-none"><span class="text-white fw-bold">✓</span></div>
+                                    <h5 class="mb-2">50% Deposit</h5>
+                                    <p class="text-muted mb-0">To confirm your booking.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class=" col-md-12 form-group d-flex">
+                        <input type="checkbox"
+                               class="custom-control-input  mt-1"
+                               id="same-address"
+                               style="width:20px; height:20px" />
+
+                        <label class="custom-control-label mx-2">
+                            I have read and agree to the <a href="/terms-and-conditions" style=" font-size: 18px; color: #d11c28; text-decoration: underline !important;">Terms & Conditions</a> and
+                            <a href="/privacy-policy" style="font-size: 18px; color: #d11c28; text-decoration: underline !important;">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <hr class="mb-4" />
+                    @*<h4 class="mb-3">Payment</h4>
+
+            <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                    <input id="PaymentType1" name="PaymentType"
+                           type="radio"
+                           class="custom-control-input"
+                           style="height: 16px; width: 16px;"
+                           value="2"
+                           checked
+                           required />
+                    <label class="custom-control-label" for="credit" style="font-size: 16px">Pay Now</label>
+                </div>
+                <div class="custom-control custom-radio mt-3">
+                    <input id="PaymentType2" name="PaymentType"
+                           type="radio"
+                           class="custom-control-input"
+                           style="height: 16px; width: 16px; font-size: 16px"
+                           value="1"
+                           required />
+                    <label class="custom-control-label" for="debit" style="font-size: 16px">Pay Later</label>
+                </div>
+            </div>*@
+                    <button type="submit" id="submitButton" class="btn btn-dark btn-lg btn-block btn_of_book">
+                        <span id="buttonText">Book Now</span>
+                        <span id="loaderSpinner" class="spinner-border spinner-border-sm text-light ms-2" style="display: none;" role="status" aria-hidden="true"></span>
+                    </button>
+
+
+
+                    <input type="hidden" name="CheckIn" value="@_CheckIn" />
+                    <input type="hidden" name="CheckOut" value="@_CheckOut" />
+                    <input type="hidden" name="RoomCatCode" value="@ViewBag.RoomCatCodes" />
+                    <input type="hidden" name="Adults" value="@_adults" />
+                    <input type="hidden" name="Children" value="@_children" />
+                    <input type="hidden" name="NoOfRooms" value="@_NoOfRooms" />
+                    <input type="hidden" name="RoomRate" value="@roomPrice" />
+                    @*<input type="hidden" name="Taxes" value="@Taxes" />*@
+                    <input type="hidden" name="AmountWithoutTaxes" value="@AmountWithOutTaxes" />
+                    <input type="hidden" name="TotalAmount" value="@TotalAmount" />
+                    <input type="hidden" name="RoomCateRoomNums" value="@_roomCateRoomNums" />
+                    <input type="hidden" name="RatePlanIDs" value="@RatePlanIDs" />
+                    <input type="hidden" name="RoomRates" value="@RoomRates" />
+                    <input type="hidden" name="VoucherCode" id="hiddenVoucherCode" value="" />
+                    <input type="hidden" name="hdnTotalAmount" id="hdnTotalAmount" value="@ViewBag.TotalAmount" />
+                    <input type="hidden" name="hdnDiscountAmount" id="hdnDiscountAmount" value="@ViewBag.discountAmount" />
+                    <input type="hidden" name="hdnTotalTax" id="hdnTotalTax" value="@ViewBag.TotalTax" />
+
+                }
+
+            </div>
+
+            <div class="col-md-5 mb-30 offset-md-1 section_2">
+
+                <div class="owl-carousel owl-theme owl-loaded owl-drag">
+                    <div class="owl-stage-outer">
+                        <div class="owl-item cloned">
+                            <div class="pricing-card" style="background: #000000">
+                                <div class="image-containerr">
+                                    <div class="mb-3">
+                                        <img src="@ViewBag.RoomImage" class="img-fluid" />
+                                    </div>
+                                    <div class="top-right-text">@ViewBag.Category.Category</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="container">
+                                        <div class="row" style="padding:10px">
+                                            <h3 style="text-align: center; color: #fff; font-family: 'Roboto', sans-serif; font-size: 12px; line-height: 12px; letter-spacing: 2px; ">YOUR RESERVATION</h3>
+                                            <div class="nd_booking_section nd_booking_height_30"></div>
+                                            <div class="col-6 col-md-6 mt-3">
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align: center; padding: 10px;">
+                                                        <p style="margin-bottom: 0px; font-size: 12px; color: #d11c28; font-family: 'Roboto', sans-serif; ">CHECK-IN</p>
+                                                        <p style="margin-bottom: 0px; color: #d11c28; font-size: 40px; line-height: 40px; font-family: 'Gilda Display', sans-serif; ">
+                                                            @(_CheckIn.Day)
+                                                        </p>
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Gilda Display', sans-serif; font-style: italic;">
+
+                                                            @(_CheckIn.ToString("MMM, yyyy")) <!-- Month and Year in "Nov, 2024" format -->
+                                                        </p>
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Roboto', sans-serif;">
+                                                            @(_CheckIn.ToString("dddd").ToUpper()) <!-- Day of the week in uppercase, e.g., "WEDNESDAY" -->
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-6 mt-3">
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align: center; padding: 10px;">
+                                                        <p style="margin-bottom: 0px; font-size: 12px; color: #d11c28; font-family: 'Roboto', sans-serif;">CHECK-OUT</p>
+                                                        <p style="margin-bottom: 0px; color: #d11c28; font-size: 40px; line-height: 40px; font-family: 'Gilda Display', sans-serif;">
+                                                            @(_CheckOut.Day) <!-- Day of the month -->
+                                                        </p>
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Gilda Display', sans-serif; font-style: italic;">
+
+                                                            @(_CheckOut.ToString("MMM, yyyy")) <!-- Month and Year in "Nov, 2024" format -->
+                                                        </p>
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Roboto', sans-serif;">
+                                                            @(_CheckOut.ToString("dddd").ToUpper()) <!-- Day of the week in uppercase, e.g., "THURSDAY" -->
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-6 mt-3">
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align:center;padding:15px">
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 30px; line-height: 30px; font-family: 'Gilda Display', sans-serif; ">@totalDays</p>
+                                                        <p style=" margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Roboto', sans-serif; ">NIGHTS</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-6 mt-3">
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align:center;padding:15px">
+
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 30px; line-height: 30px; font-family: 'Gilda Display', sans-serif; ">  @( _adults + _children )</p>
+                                                        <p style=" margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Roboto', sans-serif; ">GUEST</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-6 mt-3">
+
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align:center;padding:10px">
+
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 30px; line-height: 30px; font-family: 'Gilda Display', sans-serif; ">@ViewBag.TotalTax</p>
+
+                                                        <p style=" margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Roboto', sans-serif; ">Taxes</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6 col-md-6 mt-3">
+
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align:center;padding:10px">
+
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 30px; line-height: 30px; font-family: 'Gilda Display', sans-serif; ">@ViewBag.discountAmount</p>
+
+                                                        <p style=" margin-bottom: 0px; color: #000; font-size: 11px; font-family: 'Roboto', sans-serif; ">Room Price</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @*<div class="col-6 col-md-6 mt-3">
+
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align:center;padding:15px">
+
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 30px; line-height: 30px; font-family: 'Gilda Display', sans-serif; ">14:00</p>
+
+                                                  
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6 col-md-6 mt-3">
+
+                                                <div class="social valign" style="background: #fff">
+                                                    <div class="full-width" style="text-align:center;padding:15px">
+
+                                                        <p style="margin-bottom: 0px; color: #000; font-size: 30px; line-height: 30px; font-family: 'Gilda Display', sans-serif; ">12:00</p>
+
+                                                    
+
+                                                    </div>
+                                                </div>
+
+                                            </div>*@
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="social valign" style="background: #d11c28; height: 100px;">
+                                        <div class="full-width" style="text-align:center">
+                                            <div class="price-row">
+                                                <p style="margin-bottom: 0px; font-size: 30px; color: #fff; font-family: 'Gilda Display', sans-serif;" id="totalPriceCell">@ViewBag.TotalAmount</p>
+                                                <p style="line-height: 18px;">
+                                                    <span style="color: #fff; font-family: 'Roboto', sans-serif; padding-right: 50px;">PKR</span> <br /> <span style="color: #fff; margin-left: 15px; font-family: 'Roboto', sans-serif;">/TOTAL</span>   <span style=" margin-bottom: 0px; color: #fff; font-size: 11px; font-family: 'Roboto', sans-serif; ">+TAX</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('myForm');
+        var submitButton = document.getElementById('submitButton');
+        var loaderSpinner = document.getElementById('loaderSpinner');
+        var buttonText = document.getElementById('buttonText');
+
+        if (form && submitButton && loaderSpinner && buttonText) {
+            form.addEventListener('submit', function () {
+                // Disable the button to prevent multiple submissions
+                submitButton.disabled = true;
+
+                // Show the loader spinner and move it to the left side
+                loaderSpinner.style.display = 'inline-block';
+                buttonText.style.display = 'inline'; // Keep "Book Now" text visible
+
+                // Apply styles to position the spinner to the left
+                loaderSpinner.classList.add('me-2');
+                buttonText.classList.add('ms-2');
+
+            });
+        }
+    });
+</script>
+
+
+<script>
+    $(function () {
+        $('.payment-card.selectable').click(function () {
+            $('.payment-card.selectable').removeClass('selected');
+            $('.checkmark').addClass('d-none');
+            $(this).addClass('selected');
+            $(this).find('.checkmark').removeClass('d-none');
+        });
+    });
+</script>
+<script>
+    function setPaymentType(element, value) {
+        // Set hidden input value
+        document.getElementById("PaymentType").value = value;
+
+        // Remove selection from all cards
+        document.querySelectorAll(".payment-card").forEach(card => {
+            card.classList.remove("selected");
+            card.querySelector(".checkmark").classList.add("d-none");
+        });
+
+        // Add selection to clicked card
+        element.classList.add("selected");
+        element.querySelector(".checkmark").classList.remove("d-none");
+    }
+</script>
+
+<script>
+    document.getElementById("onlinePaymentBtn").addEventListener("click", function () {
+        document.getElementById("PaymentType").value = "purchase"; // Set payment type
+        document.getElementById("bookingForm").submit(); // Submit the form
+    });
+
+    document.getElementById("directBookingBtn").addEventListener("click", function () {
+        document.getElementById("PaymentType").value = "refinance"; // Set payment type
+        document.getElementById("bookingForm").submit(); // Submit the form
+    });
+</script>
+
+<script>
+    var isVoucherApplied = false;
+
+    function applyVoucher() {
+        if (isVoucherApplied) {
+            alert('Voucher has already been applied.');
+            return;
+        }
+
+        var voucherCode = document.getElementById('voucherCode').value;
+        var totalAmountField = document.getElementById('totalPriceCell');
+        var hiddenVoucherCodeField = document.getElementById('hiddenVoucherCode');
+
+        if (!totalAmountField || !hiddenVoucherCodeField) {
+            console.error('Total Amount or Hidden Voucher Code field is not found');
+            return;
+        }
+
+        $.ajax({
+            url: '/SearchResult/GetDiscountAmount',
+            type: 'POST',
+            data: { code: voucherCode },
+            success: function (response) {
+                if (response.success) {
+                    var totalAmount = parseFloat(totalAmountField.innerText.replace('Rs. ', '').replace(',', ''));
+                    var discountAmount = response.discountAmount;
+                    var newTotalAmount = totalAmount - discountAmount;
+
+                    totalAmountField.innerText = newTotalAmount;
+
+                    isVoucherApplied = true;
+                    hiddenVoucherCodeField.value = voucherCode;
+                    document.getElementById('voucherIcon').innerHTML = '<i class="fa fa-check" style="color: red;"></i>';
+                    const applyBtn = document.getElementById('applyVoucherBtn');
+                    applyBtn.disabled = true;
+                    applyBtn.innerHTML = '<span id="voucherIcon" style="margin-right: 8px;"><i class="fa fa-check" style="color: red;"></i></span>Applied';
+
+                    document.getElementById('removeVoucherBtn').disabled = false;
+
+                    // Store the discount amount for restoration later
+                    document.getElementById('removeVoucherBtn').setAttribute('data-discount', discountAmount);
+                    document.getElementById('removeVoucherBtn').setAttribute('data-original-amount', totalAmount);
+                } else {
+                    alert('Invalid voucher code');
+                }
+            },
+            error: function () {
+                alert('An error occurred while applying the voucher code.');
+            }
+        });
+    }
+
+    function removeVoucher() {
+        var totalAmountField = document.getElementById('totalPriceCell');
+        var hiddenVoucherCodeField = document.getElementById('hiddenVoucherCode');
+
+        if (!totalAmountField || !hiddenVoucherCodeField) {
+            console.error('Total Amount or Hidden Voucher Code field is not found');
+            return;
+        }
+
+        var originalAmount = document.getElementById('removeVoucherBtn').getAttribute('data-original-amount');
+
+        totalAmountField.innerText = originalAmount;
+        hiddenVoucherCodeField.value = '';
+        isVoucherApplied = false;
+
+        document.getElementById('voucherIcon').innerHTML = '';
+        document.getElementById('applyVoucherBtn').disabled = false;
+        document.getElementById('removeVoucherBtn').disabled = true;
+        const applyBtn = document.getElementById('applyVoucherBtn');
+        applyBtn.innerHTML = '<span id="voucherIcon" style="margin-right: 8px;"></span>Apply';
+
+    }
+
+</script>

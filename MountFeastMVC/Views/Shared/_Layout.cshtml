@@ -1,0 +1,949 @@
+﻿﻿@{
+    var blogs = new HotelWebsite.Controllers.BlogsController().GetAllBlogs();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <meta name="Keyword" content="@ViewBag.keywords" />
+    <meta name="description" content="@ViewBag.Description" />
+
+    <meta property=og:title content="@ViewBag.keywords" />
+    <meta property=og:url content="https://mountfeasthotel.com/" />
+    <meta property="og:image" content="https://mountfeasthotel.com/Content/Star/images/logo.png" />
+    <meta property=og:type content=website />
+    <meta property=og:description content="@ViewBag.Description" />
+    <meta property=og:locale content=en_US />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content="@ViewBag.Title">
+    <meta name="twitter:description" content="@ViewBag.Description">
+    <meta name="twitter:url" content="https://mountfeasthotel.com">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://mountfeasthotel.com/twitter-image.png">
+<meta name="google-site-verification" content="62RZMZ7HMhDBNxTpyzH24T7tSsK4OsKdtqGbrnBXIUQ" />
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/bootstrap-submenu.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/css/leaflet.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/Assets/css/map.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/fonts/flaticon/font/flaticon.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/Assets/fonts/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/fonts/linearicons/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/slick.css">
+    <link href="~/Content/Assets/css/skins/default.css" rel="stylesheet" />
+    <link href="https://your-font-provider.com/graphik.css" rel="stylesheet">
+    <link href="/Content/SearchBar/Css/Mobile Search/One.css" rel="stylesheet">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/initial.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/style.css">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="~/Content/Assets/css/skins/default.css">
+    <link href="~/Content/SearchBar/Rangepicker/daterangepicker.css" rel="stylesheet" />
+
+
+    <link href="~/Content/SearchBar/Css/DesktopSearch/SearchBar.css" rel="stylesheet" />
+    <link href="~/Content/SearchBar/Css/DesktopSearch/SearchBarNine.css" rel="stylesheet" />
+    <link href="~/Content/SearchBar/Css/DesktopSearch/SearchBarSix.css" rel="stylesheet" />
+    <link href="~/Content/SearchBar/Css/DesktopSearch/SearchBarTen.css" rel="stylesheet" />
+    <link href="~/Content/HomePage.css" rel="stylesheet" />
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="~/Content/Assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- Google fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Assets/css/ie10-viewport-bug-workaround.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script type="text/javascript" src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="~/Content/Assets/js/ie-emulation-modes-warning.js"></script>
+
+
+
+    <link rel="canonical" href="@ViewBag.canonical" />
+
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "Hotel",
+            "name": "Mount Feast",
+            "description": "Experience luxury stay at Mount Feast Hotel Naran – one of the best hotels in Naran Kaghan Valley.Book room online at best hotel in Naran Main Bazar.",
+            "address": {
+                "@@type": "PostalAddress",
+                "addressCountry": "Pakistan",
+                "addressLocality": "Naran",
+                "addressRegion": "Mansehra",
+                "postalCode": "21200",
+                "streetAddress": "N 15 Mansehra - Naran - Jalkhad - Chilas Rd, Naran, Mansehra, Khyber Pakhtunkhwa 21200, Pakistan"
+            },
+            "telephone": "03328571133",
+            "photo": "https://mountfeasthotel.com/Content/Assets/img/logos/logo.png",
+            "starRating": {
+                "type": "Rating",
+                "ratingValue": "3"
+            },
+            "priceRange": "$50 - $150"
+        }
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MWLSK3R');</script>
+    <!-- End Google Tag Manager -->
+
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNL8QV6"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    @*<div class="page_loader"></div>*@
+
+    <!-- Option Panel -->
+    <div class="option-panel option-panel-collased">
+        <h2>Change Color</h2>
+        <div class="color-plate default-plate" data-color="default"></div>
+        <div class="color-plate blue-plate" data-color="blue"></div>
+        <div class="color-plate yellow-plate" data-color="yellow"></div>
+        <div class="color-plate red-plate" data-color="red"></div>
+        <div class="color-plate green-light-plate" data-color="green-light"></div>
+        <div class="color-plate orange-plate" data-color="orange"></div>
+        <div class="color-plate yellow-light-plate" data-color="yellow-light"></div>
+        <div class="color-plate green-light-2-plate" data-color="green-light-2"></div>
+        <div class="color-plate olive-plate" data-color="olive"></div>
+        <div class="color-plate purple-plate" data-color="purple"></div>
+        <div class="color-plate blue-light-plate" data-color="blue-light"></div>
+        <div class="color-plate brown-plate" data-color="brown"></div>
+        <div class="setting-button">
+            <i class="fa fa-gear"></i>
+        </div>
+    </div>
+      <!-- /Option Panel -->
+  <!-- Main header start -->
+  <header class="main-header sticky-header header-fixed" id="main-header-3">
+      <div class="container">
+          <div class="header-inner">
+              <nav class="navbar navbar-expand-lg navbar-light">
+                  <a class="navbar-brand logo d-flex w-33 mr-auto" href="@Url.Action("Index","Home")">
+                      <img src="~/Content/Assets/img/logos/logo.png" alt="mount-feast" class="logo-photo">
+                  </a>
+                  <button class="navbar-toggler" id="drawer" type="button">
+                      <span class="fa fa-bars"></span>
+                  </button>
+                  <div class="navbar-collapse collapse w-100 justify-content-end" id="navbar">
+                      <ul class="navbar-nav ml-auto">
+
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Hotels & Resorts
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <li><a class="dropdown-item" href="@Url.Action("Naran","Location")">Naran</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("Skardu","Location")">Skardu</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("Islamabad","Location")">Islamabad</a></li>
+
+                              </ul>
+                          </li>
+
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Tours & Travel
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <li><a class="dropdown-item" href="@Url.Action("Index","PlacesandActivities")">Naran</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("Skardu","PlacesandActivities")">Skardu</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("Islamabad","PlacesandActivities")">Islamabad</a></li>
+
+                              </ul>
+                          </li>
+
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                                  Restuarant & Dinning
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <li><a class="dropdown-item" href="@Url.Action("NaranRestuarant","Restaurant")">Naran</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("SkarduRestuarant","Restaurant")">Skardu</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("IslamabadRestuarant" ,"Restaurant")">Islamabad</a></li>
+
+                              </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+
+
+                              <a class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                                  Contact
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <li><a class="dropdown-item" href="@Url.Action("Index","Contact")">Naran</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("Skardu","Contact")">Skardu</a></li>
+                                  <li><a class="dropdown-item" href="@Url.Action("Islamabad" ,"Contact")">Islamabad</a></li>
+
+                              </ul>
+                          </li>
+                          <li class="nav-item submit-property-button">
+                              <a class="button btn-3" href="#virtualTourSection">
+                                  Virtual Tour
+                              </a>
+                          </li>
+
+                      </ul>
+                  </div>
+              </nav>
+          </div>
+      </div>
+  </header>
+  <!-- Main header end -->
+  <!-- Sidenav start -->
+  <nav id="sidebar" class="nav-sidebar">
+      <!-- Close btn-->
+      <div id="dismiss">
+          <i class="fa fa-close"></i>
+      </div>
+      <div class="sidebar-inner">
+          <div class="sidebar-logo">
+              <a href="@Url.Action("Index","Home")">
+                  <img src="~/Content/Assets/img/logos/logo.png" alt="mount-feast">
+              </a>
+          </div>
+          <div class="sidebar-navigation">
+
+              <ul class="menu-list">
+
+                  <li>
+                      <a> Hotels and Resorts <em class="fa fa-chevron-down"></em></a>
+                      <ul>
+                          <li>
+                              <a href="@Url.Action("Naran","Location")">Naran</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Islamabad","Location")">Islamabad</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Skardu","Location")">Skardu</a>
+
+                          </li>
+
+                      </ul>
+                  </li>
+
+                  <li>
+                      <a>Tours and Travel <em class="fa fa-chevron-down"></em></a>
+                      <ul>
+                          <li>
+                              <a href="@Url.Action("Index","PlacesandActivities")">Naran</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Islamabad","PlacesandActivities")">Islamabad</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Skardu","PlacesandActivities")">Skardu</a>
+
+                          </li>
+
+                      </ul>
+                  </li>
+
+
+                  <li>
+                      <a>Restuarant and Dinning <em class="fa fa-chevron-down"></em></a>
+                      <ul>
+                          <li>
+                              <a href="@Url.Action("NaranRestuarant","Restaurant")">Naran</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("IslamabadRestuarant","Restaurant")">Islamabad</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("SkarduRestuarant","Restaurant")">Skardu</a>
+
+                          </li>
+
+                      </ul>
+                  </li>
+                  <li>
+                      <a>Contact <em class="fa fa-chevron-down"></em></a>
+                      <ul>
+                          <li>
+                              <a href="@Url.Action("Index","Contact")">Naran</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Islamabad","Contact")">Islamabad</a>
+
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Skardu","Contact")">Skardu</a>
+
+                          </li>
+
+                      </ul>
+                  </li>
+                  <li>
+                      <a href="#virtualTourSection">Virtual Tour</a>
+                      
+                  </li>
+              </ul>
+          </div>
+          <div class="get-in-touch">
+              <h3 class="heading">Get in Touch</h3>
+              <div class="sidebar-contact-info">
+                  <div class="icon">
+                      <i class="fa fa-phone"></i>
+                  </div>
+                  <div class="body-info">
+                      <a href="tel:923111786446 ">+92-3111786446</a>
+                  </div>
+              </div>
+              <div class="sidebar-contact-info">
+                  <div class="icon">
+                      <i class="fa fa-envelope"></i>
+                  </div>
+                  <div class="body-info">
+                      <a href="mailto:info@mountfeasthotel.com">info@mountfeasthotel.com</a>
+                  </div>
+              </div>
+
+          </div>
+          <div class="get-social">
+              <h3 class="heading">Get Social</h3>
+              <div class="social-list">
+                  <a href="https://www.facebook.com/hotelmountfeastnaran" class="text-black">
+                      <div class="icon">
+
+                          <span><i class="fa fa-facebook"></i></span>
+                      </div>
+                  </a>
+                  <a href="https://www.instagram.com/mountfeastnaran/">
+                      <div class="icon">
+
+                          <span><i class="fa fa-instagram"></i></span>
+                      </div>
+                  </a>
+                  <a href="https://www.reddit.com/user/MountFeastHotel">
+                      <div class="icon ">
+
+                          <span><i class="fa fa-reddit"></i></span>
+                      </div>
+                  </a>
+                  <a href="https://www.pinterest.com/mountfeasthotelNaran">
+                      <div class="icon mr-0">
+
+                          <span><i class="fa fa-rss"></i></span>
+                      </div>
+                  </a>
+
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- Sidenav end -->
+  <!-- Our service there end -->
+    @RenderBody()
+
+    <div class="clearfix"></div>
+
+
+ <div  id="virtualTourSection" class="blog comon-slick content-area" >
+     <div class="container">
+        <div class="main-title-2">
+            <h2>
+                Step Inside Royalty 
+
+                <span>Explore the Executive Suite Virtually</span>
+            </h2>
+            <p class="mb-20">
+                Ready for a royal escape? Take a breathtaking Virtual Tour of our Executive Suite at Mount Feast Hotel Naran — where elegance meets the mountains. Glide through spacious interiors, cozy lounges, and panoramic views that redefine luxury. Your dream stay is just a click away — explore now and feel the comfort before you book!
+            </p>
+        </div>
+         <iframe width="100%" height="450" src="https://my.matterport.com/show/?m=2VhF8cZku5n" frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"></iframe>
+        
+     </div>
+ </div>
+
+<div class="blog comon-slick content-area" style="background:#fff">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title-2">
+            <h2>
+                Latest
+                <span>News and Updates</span>
+            </h2>
+            <p class="mb-20">
+                Stay informed with the latest news, travel tips, and exciting updates from <a href="/">Mount Feast Hotels</a> in
+                Pakistan. From seasonal promotions and event highlights to travel guides and new services at our <a href="/islamabad-hotel-gallery">Islamabad</a>, <a href="/gallery-hotel-naran">Naran</a>, and <a href="/skardu-hotel-gallery">Skardu</a> properties — our blog keeps you connected. Discover everything you need to plan your perfect stay in Pakistan. Explore our latest stories and never
+                miss an update from one of the best hotel brands in Pakistan.
+            </p>
+        </div>
+        <div class="slick row comon-slick-inner" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+            @{
+                foreach (var ro in blogs.OrderBy(b => b.PublishedDate))
+                {
+                    string detailUrl = Url.RouteUrl("postDetailRoute", new { postId = ro.PostId, slug = ro.Slug });
+
+                    <div class="item slide-box wow fadeInUp delay-04s">
+                        <div class="blog-3">
+                            <div class="blog-image">
+                                <img src="../uploads/blog/@ro.DefaultImage" alt="blog-3" class="img-fluid w-100">
+                                <div class="date-box">
+                                    @(ro.PublishedDate?.ToString("dd MMM") ?? "N/A")
+                                </div>
+
+                                <div class="post-meta clearfix">
+                                    <span><a href="#"><i class="fa fa-user"></i></a>  @ro.Author</span>
+                                </div>
+                            </div>
+                            <div class="detail">
+                                <h4>
+                                    <a href="@detailUrl">@ro.Title</a>
+                                </h4>
+                                <p>
+                                    @ro.ShortDescriptions
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+        </div>
+    </div>
+</div>
+<div class="counters-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 align-self-center wow fadeInLeft delay-04s">
+                <div class="sec-title-three">
+                    <div class="main-title-5 mb-0">
+                        <h2 style="color:#fff; padding:0px">
+                            Why Choose Mount Feast Hotels for Luxurious Stay in Pakistan
+
+                        </h2>
+                        <P>
+                            Mount Feast Hotels offers an unmatched blend of elegance, comfort, and top-tier hospitality
+                            across its prime locations in <a style="color:#fff" href="/hotel-in-islamabad-pakistan">Islamabad</a>, <a style="color:#fff" href="/hotel-naran">Naran</a>, and <a style="color:#fff" href="/hotel-in-skardu-gilgit-baltistan">Skardu</a>. Whether you're seeking a peaceful
+                            mountain escape or a city retreat, our luxurious rooms, in-house dining, and modern amenities
+                            promise an unforgettable stay. With exceptional customer service, stunning views, and close
+                            proximity to popular attractions, we redefine what it means to stay in the best hotels in Pakistan.
+                            Choose us for a luxury experience that feels like home, wherever you go in Pakistan.
+                        </P>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 wow fadeInRight delay-04s">
+                <div class="counters-3-inner">
+                    <div class="counter-box-3 d-flex">
+                        <i class="flaticon-tag"></i>
+                        <div class="detail">
+                            <h2>
+                                Peaceful
+
+                                <br />
+                                stay
+                            </h2>
+
+                        </div>
+                    </div>
+                    <div class="counter-box-3 d-flex">
+                        <i class="flaticon-symbol-1"></i>
+                        <div class="detail">
+                            <h2>
+                                Discounted
+                                <br />
+                                Prices
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="counter-box-3 d-flex">
+                        <i class="flaticon-people"></i>
+                        <div class="detail">
+                            <h2>
+                                24/7
+                                <br />
+                                Support
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="counter-box-3 d-flex">
+                        <i class="flaticon-people-1"></i>
+                        <div class="detail">
+                            <h2>
+                                Best
+                                <br />
+                                Restaurant
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="partners bg-white" style="padding: 15px 0 15px">
+        <div class="container">
+            @*<div class="main-title-2" style="margin-bottom:20px">
+                    <h4>
+                        Our Partner
+                        <span>Mount Feast Hotel</span>
+                    </h4>
+                </div>*@
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="custom-slider slide-box-btn">
+
+                        <div class="custom-box"><img src="~/Content/Assets/img/brand/bokking.jpg" alt="mount-feast"/></div>
+                        <div class="custom-box"><img src="~/Content/Assets/img/brand/expedia.jpg" alt="mount-feast" /></div>
+                        <div class="custom-box"><img src="~/Content/Assets/img/brand/tripadvisor.jpg" alt="mount-feast"/></div>
+                        <div class="custom-box"><img src="~/Content/Assets/img/brand/bokking.jpg" alt="mount-feast" /></div>
+                        <div class="custom-box"><img src="~/Content/Assets/img/brand/expedia.jpg" alt="mount-feast"/></div>
+                        <div class="custom-box"><img src="~/Content/Assets/img/brand/tripadvisor.jpg" alt="mount-feast"/></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="intro-section">
+        <div class="intro-section-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-7 col-sm-12">
+                        <h3>For further inquiry, Please Contact Us!</h3>
+                    </div>
+                    <div class="col-lg-3 col-md-5 col-sm-12">
+                        <a class="btn-2 btn-white" href="tel:+92-3111786446">
+                            <span>Get in Touch</span> <i class="arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="tel:+92-3111786446" class="floatp" target="_blank">
+        <i class="fa fa-phone my-floatp mt-2"></i>
+    </a>
+    <a href="https://wa.me/+923111786446? text=Hi! Mountfeast Hotel." class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float mt-2"></i>
+    </a>
+    <footer class="main-footer-3">
+        <div class="container footer-inner">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <h4>Mount Feast Hotels</h4>
+                        <ul class="links">
+                            <li>
+                                <a href="@Url.Action("Index","AboutUs")">About Mount Feast Hotels</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Career")">Careers</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","PrivacyPolicy")">Privacy Policy</a>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("Index","TermsandConditions")">Terms & Conditions</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Blogs")">Blogs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <h4>
+                            Our Locations
+                        </h4>
+                        <ul class="links">
+
+                            <li>
+                                <a href="/hotel-naran-contact-number">Mount Feast Naran</a>
+                            </li>
+
+                            <li>
+                                <a href="/hotel-skardu-contact-number">Mount Feast Skardu</a>
+                            </li>
+
+                            <li>
+                                <a href="/hotel-islamabad-contact-number">Mount Feast Islamabad</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="footer-item">
+                        <h4>
+                            Visit Us
+                        </h4>
+                        <ul class="contact-list links">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+
+                                <a href="https://maps.app.goo.gl/fRL1jU7LJEmdVptK6">
+                                    Mount Feast Hotel Main Mansehra-Naran Road
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+
+                                <a href="https://maps.app.goo.gl/DLL6gqDAPx4zrcHx5">
+                                    Mount Feast Hotel, Airport Rd, Gamba Skardu, Skardu
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                <a href="https://maps.app.goo.gl/zAzf4boLV8DWuUxg6">
+                                    Sir Fazal Ali Ave, Mumtaz City Islamabad, 46000
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="footer-item clearfix">
+                        <h4>
+                            Contact Us
+                        </h4>
+                        <ul class="contact-list links">
+                            <li>
+                                <i class="fa fa-envelope"></i>
+
+                                <a href="mailto:info@mountfeasthotel.com">info@mountfeasthotel.com</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+
+                                <a href="tel:+92-3111786446">+92-3111786446</a>
+                            </li>
+                        </ul>
+                        <div class="social-media clearfix">
+                            <div class="social-list">
+                                <a href="https://www.facebook.com/hotelmountfeastnaran">
+                                    <div class="icon">
+
+                                        <span><i class="fa fa-facebook"></i></span>
+                                    </div>
+                                </a>
+
+                                <a href="https://www.instagram.com/mountfeastnaran/">
+                                    <div class="icon">
+
+                                        <span><i class="fa fa-instagram"></i></span>
+                                    </div>
+                                </a>
+                                <a href="https://www.reddit.com/user/MountFeastHotel">
+                                    <div class="icon ">
+
+                                        <span><i class="fa fa-reddit"></i></span>
+                                    </div>
+                                </a>
+                                <a href="https://www.pinterest.com/mountfeasthotelNaran">
+                                    <div class="icon mr-0">
+
+                                        <span><i class="fa fa-rss"></i></span>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy">© 2025 <a href="https://growbiztech.com/" target="_blank">Growbiz Technology &amp; Marketing.</a> All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get the full date-time string
+        const dateBox = document.getElementById('dateBox');
+        const fullDate = dateBox.innerText;
+
+        // Extract the day
+        const day = new Date(fullDate).getDate();
+
+        // Set the day back to the div
+        dateBox.innerText = day;
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const navLinks = document.querySelectorAll(".nav-link");
+            const menuItems = document.querySelectorAll(".menu-item");
+
+            // Get default active category (first one with 'active' class)
+            const activeCategory = document.querySelector(".nav-link.active").getAttribute("data-category");
+
+            // Hide all menu items except the active category
+            menuItems.forEach(item => {
+                if (item.getAttribute("data-category") !== activeCategory) {
+                    item.style.display = "none";
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    // Remove active class from all links
+                    navLinks.forEach(nav => nav.classList.remove("active"));
+                    this.classList.add("active");
+
+                    // Get clicked category
+                    const category = this.getAttribute("data-category");
+
+                    // Show/hide menu items
+                    menuItems.forEach(item => {
+                        if (item.getAttribute("data-category") === category) {
+                            item.style.display = "flex";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
+            });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            function updateBackgroundAndText() {
+                var $carouselItems = $('.slick .item');
+                var minDiff = Infinity;
+                var $centerItem = null;
+                var carouselCenter = $('.slick').offset().left + ($('.slick').width() / 2);
+
+                $carouselItems.each(function () {
+                    var itemCenter = $(this).offset().left + ($(this).width() / 2);
+                    var diff = Math.abs(carouselCenter - itemCenter);
+
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        $centerItem = $(this);
+                    }
+                });
+
+                if ($centerItem) {
+                    var title = $centerItem.data('title');
+                    var description = $centerItem.data('description');
+                    var bgImage = $centerItem.data('bg');
+
+                    $('#dynamic-title').text(title);
+                    $('#dynamic-description').text(description);
+                    $('#background-container').css({
+                        'background-image': 'url(' + bgImage + ')',
+                        'transition': 'background-image 0.5s ease-in-out'
+                    });
+                }
+            }
+
+            // Run function when slide changes
+            $('.slick').on('afterChange', function () {
+                updateBackgroundAndText();
+            });
+
+            // Initial update on page load
+            updateBackgroundAndText();
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/Content/Assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="/Content/Assets/js/jquery.min.js"></script>
+    <script src="/Content/Assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/Content/Assets/js/bootstrap-submenu.js"></script>
+    <script src="/Content/Assets/js/rangeslider.js"></script>
+    <script src="/Content/Assets/js/jquery.mb.YTPlayer.js"></script>
+    <script src="/Content/Assets/js/wow.min.js"></script>
+    <script src="/Content/Assets/js/bootstrap-select.min.js"></script>
+    <script src="/Content/Assets/js/jquery.easing.1.3.js"></script>
+    <script src="/Content/Assets/js/jquery.scrollUp.js"></script>
+    <script src="/Content/Assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/Content/Assets/js/leaflet.js"></script>
+    <script src="/Content/Assets/js/leaflet-providers.js"></script>
+    <script src="/Content/Assets/js/leaflet.markercluster.js"></script>
+    <script src="/Content/Assets/js/dropzone.js"></script>
+    <script src="/Content/Assets/js/jquery.filterizr.js"></script>
+    <script src="/Content/Assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="/Content/Assets/js/slick.min.js"></script>
+    <script src="/Content/Assets/js/maps.js"></script>
+    <script src="/Content/Assets/js/sidebar.js"></script>
+    <script src="/Content/Assets/js/app.js"></script>
+    <script src="/Content/SearchBar/Rangepicker/moment.min.js"></script>
+    <script src="/Content/SearchBar/Rangepicker/daterangepicker.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/Content/Assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Custom javascript -->
+    <script src="/Content/Assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterButtons = document.querySelectorAll(".filtr-button");
+    const galleryButtonContainer = document.getElementById("gallery-button-container");
+
+    const galleryLinks = {
+      "1": '@Url.Action("Naran","Location")',      // Naran
+      "2": '@Url.Action("Skardu", "Location")',     // Skardu
+      "3": '@Url.Action("Islamabad", "Location")'   // Islamabad
+    };
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        const filterValue = this.getAttribute("data-filter");
+        if (galleryLinks[filterValue]) {
+          galleryButtonContainer.innerHTML = `
+            <a class="btn btn-danger" href="${galleryLinks[filterValue]}">Learn More</a>
+          `;
+          galleryButtonContainer.style.display = "block";
+        } else {
+          galleryButtonContainer.style.display = "none";
+        }
+      });
+    });
+
+    // Optional: hide on load if "All" is the default
+    galleryButtonContainer.style.display = "none";
+  });
+    </script>
+    <script>
+        // Set default dates to today and tomorrow
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date();
+            const tomorrow = new Date();
+            tomorrow.setDate(today.getDate() + 1);
+
+            // Format dates
+            const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+            document.getElementById('ci_date_text').textContent = today.toLocaleDateString('en-US', options);
+            document.getElementById('co_date_text').textContent = tomorrow.toLocaleDateString('en-US', options);
+
+            // Set hidden input values
+            document.querySelector('input[name="checkin_monthday"]').value = today.getDate();
+            document.querySelector('input[name="checkin_year_month"]').value = `${today.getFullYear()}-${today.getMonth() + 1}`;
+            document.querySelector('input[name="checkout_monthday"]').value = tomorrow.getDate();
+            document.querySelector('input[name="checkout_year_month"]').value = `${tomorrow.getFullYear()}-${tomorrow.getMonth() + 1}`;
+
+            // Add click handlers to date cells (this will need to match your calendar's structure)
+            setTimeout(() => {
+                setupCalendarCloseBehavior();
+            }, 500); // Small delay to ensure calendar is loaded
+        });
+
+        function setupCalendarCloseBehavior() {
+            // Find all date cells in the calendar
+            const dateCells = document.querySelectorAll('.bui-calendar__date');
+
+            dateCells.forEach(cell => {
+                cell.addEventListener('click', function () {
+                    // Wait a small moment for the dates to update
+                    setTimeout(() => {
+                        checkIfShouldCloseCalendar();
+                    }, 100);
+                });
+            });
+        }
+
+        function checkIfShouldCloseCalendar() {
+            const checkinSelected = document.getElementById('ci_date_text').textContent.trim() !== '';
+            const checkoutSelected = document.getElementById('co_date_text').textContent.trim() !== '';
+
+            if (checkinSelected && checkoutSelected) {
+                closeCalendar();
+            }
+        }
+
+        function closeCalendar() {
+            // Try multiple ways to close the calendar since we don't know the exact implementation
+
+            // 1. Check if there's a close button and click it
+            const closeButton = document.querySelector('.bui-calendar__close, [data-calendar-close]');
+            if (closeButton) {
+                closeButton.click();
+                return;
+            }
+
+            // 2. Check for overlay click handler
+            const overlay = document.querySelector('.bui-calendar-overlay, .searchbox_cross_product__section-container');
+            if (overlay) {
+                overlay.click();
+                return;
+            }
+
+            // 3. Hide the calendar directly
+            const calendar = document.querySelector('.searchbox-calendar-bui');
+            if (calendar) {
+                calendar.style.display = 'none';
+                calendar.classList.remove('open', 'active');
+            }
+
+            // 4. Remove the 'open' attribute if it exists
+            const calendarContainer = document.querySelector('[data-calendar]');
+            if (calendarContainer) {
+                calendarContainer.removeAttribute('open');
+            }
+
+            console.log('Calendar closed');
+        }
+
+        // Alternative approach if the above doesn't work - mutation observer
+        function setupMutationObserver() {
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.type === 'attributes' &&
+                        (mutation.attributeName === 'data-checkin-text' ||
+                            mutation.attributeName === 'data-checkout-text')) {
+                        checkIfShouldCloseCalendar();
+                    }
+                });
+            });
+
+            const config = { attributes: true, attributeFilter: ['data-checkin-text', 'data-checkout-text'] };
+            const checkinElement = document.getElementById('ci_date_text');
+            const checkoutElement = document.getElementById('co_date_text');
+
+            if (checkinElement) observer.observe(checkinElement, config);
+            if (checkoutElement) observer.observe(checkoutElement, config);
+        }
+
+        // Call this in DOMContentLoaded if the click approach doesn't work
+        // setupMutationObserver();
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+﻿@using MountFeastMVC.Models;
+
+@{
+
+    var blog = (List<Post>)TempData["blog"];
+    ViewBag.Title = blog[0].Title;
+    ViewBag.Description = blog[0].MetaDescription;
+    ViewBag.Keywords = blog[0].Keywords;
+    var blogs = (List<Post>)ViewBag.blogs;
+}
+
+<div class="sub-banner overview-bgi">
+    <div class="overlay">
+        <div class="container">
+            <div class="breadcrumb-area">
+
+                <h2 style="color:#fff" class="fw-bold text-capitalize">
+                    Blogs Mount Feast Hotels 
+                </h2>
+
+              
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blog-body content-area">
+    <div class="container">
+        
+
+        <div class="row">
+            <div class="col-md-8 content-part">
+             
+                <div class="post post-full">
+                    <div class="post-header">
+                        <div class="post-image">
+                            <img src="/uploads/blog/@blog[0].DefaultImage"  alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="post-story mt-4">
+                        <div class="main-title-2 mb-2">
+                            <h2>@blog[0].Title</h2>
+                            <p>   @blog[0].PublishedDate, By <span class="fw-bold"> @blog[0].Author</span>.</p>                            
+                        </div>
+                        <p>  @Html.Raw(blog[0].Description)</p>
+                       
+                        <div class="post-story-body">
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+
+            <div class="col-lg-4 col-md-12 col-xs-12 ">
+                <div class="sidebar  bg-white py-5 px-3">
+                    <div class="contact-form contact-pad">
+                        <h3 class="text-center">Get In Touch</h3>
+               
+                            <form id="contact_form" action="index.html" method="GET" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                        <div class="form-group name">
+                                            <input type="text" name="firstname" class="form-control" placeholder="NAME" aria-label="Name">
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="col-md-12 mt-3">
+                                        <div class="form-group email">
+                                            <input type="email" name="email" class="form-control" placeholder="EMAIL" aria-label="Email Address">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-3">
+                                        <div class="form-group number">
+                                            <input type="text" name="phone" class="form-control" placeholder="PHONE" aria-label="Phone Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <div class="form-group message">
+                                            <textarea class="form-control" name="message" placeholder="HOW CAN WE HELP YOU" aria-label="Write message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <div class="send-btn text-center">
+                                            <button type="submit" class="button-md button-theme btn-3" style="width: 100%; border-radius: 0px; background: #d01c28; border-color: #d01c28 ">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        
+                    </div>
+
+                    <!-- Social list -->
+                    <div class="copy-right mt-0" style="background-color: #000000">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 col-md-12 col-sm-12">
+                                    <div class="social-list d-flex justify-content-center gap-4">
+                                        <a href="https://www.facebook.com/mountfeast">
+                                            <div class="icon">
+
+                                                <span><i class="fa fa-facebook"></i></span>
+                                            </div>
+                                        </a>
+                                        <a href="https://twitter.com/HotelMountFeast">
+                                            <div class="icon">
+
+                                                <span><i class="fa fa-twitter"></i></span>
+                                            </div>
+                                        </a>
+                                        <a href="https://www.instagram.com/mountfeast">
+                                            <div class="icon">
+
+                                                <span><i class="fa fa-instagram"></i></span>
+                                            </div>
+                                        </a>
+                                        <a href="https://www.reddit.com/user/MountFeastHotel">
+                                            <div class="icon ">
+
+                                                <span><i class="fa fa-reddit"></i></span>
+                                            </div>
+                                        </a>
+                                        <a href="https://www.pinterest.com/mountfeasthotelNaran">
+                                            <div class="icon mr-0">
+
+                                                <span><i class="fa fa-rss"></i></span>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social media end -->
+                </div>
+            </div>
+            </div>
+
+        </div>
+</div>

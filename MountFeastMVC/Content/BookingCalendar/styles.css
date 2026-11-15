@@ -1,0 +1,76 @@
+/* Add this to your styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 20px;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-controls {
+    margin-bottom: 10px;
+}
+
+.calendar-content {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.fixed-table {
+    flex: 0 0 auto;
+    border-right: 1px solid #ccc;
+}
+
+.scrollable-table {
+    flex: 1 1 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    height: 40px; /* Set a fixed height for all cells */
+}
+
+thead th {
+    background-color: #f4f4f4;
+}
+
+.category-row {
+    background-color: #fff;
+    font-weight: bold;
+    height: 40px; /* Match the fixed height */
+}
+
+.booked-td {
+    background-color: red;
+}
+
+.available-td {
+    background-color: lightgreen;
+}
+
+.reserved-td {
+    background-color: blue;
+    color: white;
+}
+
+.blocked-td {
+    background-color: black;
+    color: white;
+}

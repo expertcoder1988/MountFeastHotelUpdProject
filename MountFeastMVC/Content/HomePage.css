@@ -1,0 +1,29 @@
+﻿#DatepickerParentEl .daterangepicker {
+    top: 0px !important;
+    left: 0px !important;
+    right: auto !important;
+    display: block !important;
+    position: relative !important;
+}
+.modal-open .ui-datepicker {
+    z-index: 2000 !important
+}
+
+.modal-button {
+    float: left;
+}
+.hidden {
+    display: none;
+}
+
+@@media (min-width: 900px) {
+    .carousel-inner {
+        overflow: visible;
+    }
+}
+
+@@media (max-width: 900px) {
+    .main-header .navbar {
+        padding: 5px !important
+    }
+}

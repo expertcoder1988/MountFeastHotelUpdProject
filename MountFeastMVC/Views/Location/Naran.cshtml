@@ -1,0 +1,1639 @@
+﻿@{
+    ViewBag.Title = "Mount Feast Hotel at Naran | 3 Star Hotel in Naran Kaghan";
+    ViewBag.keywords = "hotel at Naran kaghan, Naran kaghan hotel, hotels in Naran kaghan, Naran valley Pakistan, Naran hotel number, hotel at Naran, hotel in Naran kaghan, Naran hotel, hotels in Naran, hotel in Naran Pakistan, place to visit in Naran, hotel rates in Naran kaghan";
+    ViewBag.canonical = "https://mountfeasthotel.com/hotel-naran";
+    ViewBag.Description = "Book luxury rooms at Mount Feast Hotel in Naran Kaghan Valley Pakistan. Explore popular places to visit, best hotel rates, latest updates about Naran Valley.";
+    List<MountFeastMVC.Models.PropertySearch> results = new List<MountFeastMVC.Models.PropertySearch>();
+
+    var blogs = new HotelWebsite.Controllers.BlogsController().GetAllBlogs();
+    if (TempData.ContainsKey("roomList"))
+    {
+        results = (List<MountFeastMVC.Models.PropertySearch>)TempData["roomList"];
+    }
+
+}
+
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet">
+<link href="~/Content/Assets/Rangepicker/daterangepicker.css" rel="stylesheet" />
+
+
+<link href="~/Content/SearchBar/Css/DesktopSearch/SearchBar.css" rel="stylesheet" />
+<link href="~/Content/SearchBar/Css/DesktopSearch/SearchBarNine.css" rel="stylesheet" />
+<link href="~/Content/SearchBar/Css/DesktopSearch/SearchBarSix.css" rel="stylesheet" />
+<link href="~/Content/SearchBar/Css/DesktopSearch/SearchBarTen.css" rel="stylesheet" />
+
+
+<!-- jQuery -->
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="banner position-relative" id="banner6">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item item-bg active" data-bs-interval="2000">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="../content/assets/img/banner/Naran_Phone1.jpg" alt="banner-photo">
+                    <img class="d-block w-100 h-100" src="../content/assets/img/banner/MountFeastBanner.jpg" alt="banner-photo" />
+                </picture>
+
+                <div class="carousel-caption banner-slider-inner d-flex h-100 position-absolute top-0 start-0 w-100">
+                    <div class="banner-content object_content container align-self-center">
+                        <p style="margin-bottom:20px">Welcome to <a style="color:#fff" href="/">Mount Feast Hotel</a> At Naran</p>
+
+                        <h1>Discover the Best Hotel in <span>Naran Kaghan</span> Valley Pakistan</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+
+        </div>
+    </div>
+
+
+    <div class="common-content container align-self-center">
+        <!--Custom Search Bar Start-->
+        <div class="xp__fieldset js--sb-fieldset accommodation " style="display:none" id="WindowSearch" data-view="accommodation">
+            <form id="PropertySearch">
+
+                <div class="row">
+                    <div data-visible="accommodation,flights,rentalcars" class="col-12 col-sm-12 col-md-6 col-lg-3">
+
+                        <input id="DesktopDaterangePicker" type="text" name="daterange" class="xp__input xp__calendar__ic" placeholder="Check-In — Check-Out" autocomplete="off" />
+                    </div>
+
+
+                    <div data-visible="accommodation,flights" class=" col-12 col-sm-12 col-md-6 col-lg-4" data-component="search/group/group-with-modal" data-sb-id="main" tabindex="0">
+                        <div data-component="xp-index/guest-errors" data-sb-id="main" data-view-id="accommodation" role="alert">
+                        </div>
+                        <label id="xp__guests__toggle" for="xp__guests__input" onclick="ToggleView('InputContainer')" class="xp__input" data-group-toggle="InputContainer" role="button" aria-expanded="false" aria-controls="InputContainer">
+                            <span class="invisible_spoken">Rooms and occupancy</span>
+                            <span class="xp__guests__count">
+                                <span id="AdultValueUpper">1 adults</span>
+                                <span data-visible="accommodation">
+                                    &nbsp;·&nbsp;
+                                    <span id="ChildrenValueUpper">0 children</span>
+                                </span>
+                                <span data-visible="accommodation">
+                                    &nbsp;·&nbsp;
+                                    <span id="RoomValueUpper">1 room</span>
+                                </span>
+                            </span>
+                        </label>
+
+                        <div id="InputContainer" class="xp__guests__inputs focussable " data-group-modal="" style="display: none;" role="region" aria-label="Rooms and occupancy">
+                            <div data-component="search/group/group" data-sb-id="main" data-sb-width="medium" data-sb-bbtool-searchbox="0" data-sb-group-children-hide="0" data-sb-group-children-ages-hide="0" data-sb-group-infants-hide="1" data-sb-group-pets-hide="0" data-sb-group-rooms-hide="0" data-sb-group-block-labels="0" data-sb-group-use_adults_label="0" data-sb-group-always-expanded="0" data-sb-group-use-bui-stepper="1" data-sb-group-bui-steppers-accessible="1" data-fe_sb_group_descriptive_dropdowns="0" data-fe_sb_universal_design="0" data-fe_sb_xpi="1" data-fe_remove_duplicate_ids="0" data-fe_sb_unique_id="" data-sb_reorder_rooms_block="1" data-sb-facelift="0" data-fe_sb_show_children_age_bracket="1" data-fe_sb_mandatory_child_ages="1" data-fe_sb_child_ages_ui_update="0" data-fe_sb_dont_use_default_child_age="1">
+                                <div class="u-clearfix" data-render="">
+                                    <div class="sb-group__field sb-group__field-adults">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <label class="bui-stepper__title" for="group_adults">Adults</label>
+                                            </div>
+                                            <div class="bui-stepper__wrapper sb-group__stepper-a11y">
+                                                <input style="display: none" type="number" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="group_adults" name="group_adults" min="1" max="30" value="2" data-group-adults-count="">
+                                                <button class="bui-button bui-button--secondary bui-stepper__subtract-button " onclick="CalculateMinusAdult()" data-bui-ref="input-stepper-subtract-button" type="button" aria-label="Decrease number of Adults" aria-describedby="group_adults_desc">
+                                                    <span class="bui-button__text">−</span>
+                                                </button>
+                                                <span class="bui-stepper__display" data-bui-ref="input-stepper-value" id="AdultValue" aria-hidden="true" data-value="">1</span>
+                                                <button class="bui-button bui-button--secondary bui-stepper__add-button " onclick="CalculatePlusAdult()" data-bui-ref="input-stepper-add-button" type="button" aria-label="Increase number of Adults" aria-describedby="group_adults_desc">
+                                                    <span class="bui-button__text">+</span>
+                                                </button>
+                                                <span class="bui-u-sr-only" aria-live="assertive" id="group_adults_desc">2 Adults</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sb-group__field sb-group-children ">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <label class="bui-stepper__title" for="group_children">Children</label>
+
+                                                <span class="bui-stepper__subtitle">Ages 0 – 17</span>
+                                            </div>
+                                            <div class="bui-stepper__wrapper sb-group__stepper-a11y">
+                                                <input style="display: none" type="number" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="group_children" name="group_children" min="0" max="10" value="2" data-group-children-count="">
+                                                <button class="bui-button bui-button--secondary bui-stepper__subtract-button " onclick="CalculateMinusChildren()" data-bui-ref="input-stepper-subtract-button" type="button" aria-label="Decrease number of Children" aria-describedby="group_children_desc">
+                                                    <span class="bui-button__text">−</span>
+                                                </button>
+                                                <span class="bui-stepper__display" data-bui-ref="input-stepper-value" id="ChildValue" aria-hidden="true">0</span>
+                                                <button class="bui-button bui-button--secondary bui-stepper__add-button " onclick="CalculatePlusChildren()" data-bui-ref="input-stepper-add-button" type="button" aria-label="Increase number of Children" aria-describedby="group_children_desc">
+                                                    <span class="bui-button__text">+</span>
+                                                </button>
+                                                <span class="bui-u-sr-only" aria-live="assertive" id="group_children_desc">0 Children</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer" style="display:none">
+                                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                                <option class="sb_child_ages_empty_zero" value="">
+                                                    Age needed
+                                                </option>
+                                                <option value="0">
+                                                    0 years old
+                                                </option>
+                                                <option value="1">
+                                                    1 year old
+                                                </option>
+                                                <option value="2">
+                                                    2 years old
+                                                </option>
+                                                <option value="3">
+                                                    3 years old
+                                                </option>
+                                                <option value="4">
+                                                    4 years old
+                                                </option>
+                                                <option value="5">
+                                                    5 years old
+                                                </option>
+                                                <option value="6">
+                                                    6 years old
+                                                </option>
+                                                <option value="7">
+                                                    7 years old
+                                                </option>
+                                                <option value="8">
+                                                    8 years old
+                                                </option>
+                                                <option value="9">
+                                                    9 years old
+                                                </option>
+                                                <option value="10" selected="">
+                                                    10 years old
+                                                </option>
+                                                <option value="11">
+                                                    11 years old
+                                                </option>
+                                                <option value="12">
+                                                    12 years old
+                                                </option>
+
+                                            </select>
+
+
+                                        </div>
+                                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer2" style="display:none">
+                                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                                <option class="sb_child_ages_empty_zero" value="">
+                                                    Age needed
+                                                </option>
+                                                <option value="0">
+                                                    0 years old
+                                                </option>
+                                                <option value="1">
+                                                    1 year old
+                                                </option>
+                                                <option value="2">
+                                                    2 years old
+                                                </option>
+                                                <option value="3">
+                                                    3 years old
+                                                </option>
+                                                <option value="4">
+                                                    4 years old
+                                                </option>
+                                                <option value="5">
+                                                    5 years old
+                                                </option>
+                                                <option value="6">
+                                                    6 years old
+                                                </option>
+                                                <option value="7">
+                                                    7 years old
+                                                </option>
+                                                <option value="8">
+                                                    8 years old
+                                                </option>
+                                                <option value="9">
+                                                    9 years old
+                                                </option>
+                                                <option value="10" selected="">
+                                                    10 years old
+                                                </option>
+                                                <option value="11">
+                                                    11 years old
+                                                </option>
+                                                <option value="12">
+                                                    12 years old
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer3" style="display:none">
+                                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                                <option class="sb_child_ages_empty_zero" value="">
+                                                    Age needed
+                                                </option>
+                                                <option value="0">
+                                                    0 years old
+                                                </option>
+                                                <option value="1">
+                                                    1 year old
+                                                </option>
+                                                <option value="2">
+                                                    2 years old
+                                                </option>
+                                                <option value="3">
+                                                    3 years old
+                                                </option>
+                                                <option value="4">
+                                                    4 years old
+                                                </option>
+                                                <option value="5">
+                                                    5 years old
+                                                </option>
+                                                <option value="6">
+                                                    6 years old
+                                                </option>
+                                                <option value="7">
+                                                    7 years old
+                                                </option>
+                                                <option value="8">
+                                                    8 years old
+                                                </option>
+                                                <option value="9">
+                                                    9 years old
+                                                </option>
+                                                <option value="10" selected="">
+                                                    10 years old
+                                                </option>
+                                                <option value="11">
+                                                    11 years old
+                                                </option>
+                                                <option value="12">
+                                                    12 years old
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer4" style="display:none">
+                                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                                <option class="sb_child_ages_empty_zero" value="">
+                                                    Age needed
+                                                </option>
+                                                <option value="0">
+                                                    0 years old
+                                                </option>
+                                                <option value="1">
+                                                    1 year old
+                                                </option>
+                                                <option value="2">
+                                                    2 years old
+                                                </option>
+                                                <option value="3">
+                                                    3 years old
+                                                </option>
+                                                <option value="4">
+                                                    4 years old
+                                                </option>
+                                                <option value="5">
+                                                    5 years old
+                                                </option>
+                                                <option value="6">
+                                                    6 years old
+                                                </option>
+                                                <option value="7">
+                                                    7 years old
+                                                </option>
+                                                <option value="8">
+                                                    8 years old
+                                                </option>
+                                                <option value="9">
+                                                    9 years old
+                                                </option>
+                                                <option value="10" selected="">
+                                                    10 years old
+                                                </option>
+                                                <option value="11">
+                                                    11 years old
+                                                </option>
+                                                <option value="12">
+                                                    12 years old
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="sb-group__field sb-group__field-rooms">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <label class="bui-stepper__title" for="no_rooms">Rooms</label>
+                                            </div>
+                                            <div class="bui-stepper__wrapper sb-group__stepper-a11y">
+                                                <input style="display: none" type="number" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="no_rooms" name="no_rooms" min="1" max="30" value="1" data-group-rooms-count="">
+                                                <button class="bui-button bui-button--secondary bui-stepper__subtract-button sb-group__stepper-button-disabled" onclick="CalculateMinusRooms()" data-bui-ref="input-stepper-subtract-button" type="button" aria-label="Decrease number of Rooms" aria-describedby="no_rooms_desc">
+                                                    <span class="bui-button__text">−</span>
+                                                </button>
+                                                <span class="bui-stepper__display" data-bui-ref="input-stepper-value" id="RoomValue" aria-hidden="true">1</span>
+                                                <button class="bui-button bui-button--secondary bui-stepper__add-button " data-bui-ref="input-stepper-add-button" onclick="CalculatePlusRooms()" type="button" aria-label="Increase number of Rooms" aria-describedby="no_rooms_desc">
+                                                    <span class="bui-button__text">+</span>
+                                                </button>
+                                                <span class="bui-u-sr-only" aria-live="assertive" id="no_rooms_desc">1 Rooms</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-visible="accommodation,flights" class="col-12 col-sm-12 col-md-6 col-lg-2" data-component="search/group/group-with-modal" data-sb-id="main" tabindex="0">
+                        <div data-component="xp-index/guest-errors" data-sb-id="main" data-view-id="accommodation" role="alert"></div>
+
+                        <label id="xp__guests__toggle" for="xp__guests__input" onclick="toggleView('Locations')" class="xp__input xp__location__toggle" data-group-toggle="Locations" role="button" aria-expanded="false" aria-controls="Locations">
+                            <span class="invisible_spoken">Locations</span>
+                            <span class="xp__guests__count">
+                                <span id="PropertyIdLabel" style="font-weight:bolder">Naran</span>
+                                <input type="hidden" id="PropertyId" value="1" />
+                            </span>
+                        </label>
+
+
+                        <div id="Locations" class="xp__guests__inputs focussable" data-group-modal="" style="display: none;" role="region" aria-label="Locations">
+                            <div data-component="search/group/group">
+                                <div class="u-clearfix" data-render="">
+                                    <div class="sb-group__field sb-group__field-adults" onclick="selectLocation('1', 'Naran')">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title">Naran</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more cities here if needed -->
+                                    <div class="sb-group__field sb-group__field-adults" onclick="selectLocation('0', 'All')">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title">All</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sb-group__field sb-group__field-adults" onclick="selectLocation('2', 'Islamabad')">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title">Islamabad</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sb-group__field sb-group__field-adults" onclick="selectLocation('3', 'Skardu')">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title">Skardu</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="xp__button col-12 col-sm-12 col-md-12 col-lg-2">
+                        <div class="sb-searchbox-submit-col -button-messages">
+                        </div>
+                        <div class="sb-searchbox-submit-col -submit-button ">
+                            <button data-sb-id="main" onclick="SearchResults()" style="background-color: #01444a" type="button" class="sb-searchbox__button " data-et-click="      customGoal:cCHObTRVDEZRdPQBcGCfTKYCccaT:1 goal:www_index_search_button_click  ">
+                                <span class="js-sb-submit-text ">
+                                    Search
+                                </span>
+                                <span class="sb-submit-helper"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!--Custom Search Bar End-->
+        <!--Custom Mobile Search Bar-->
+        <div class="searchbox_cross_product__wrapper " id="MobileSearch" style="display:none">
+            <form id="form_search_location" class="js-searchbox_redesign searchForm b-no-tap-highlight searchbox_cross_product searchbox_cross_product--overlayed" name="frm" action="/searchresults.en-gb.html?label=gen173nr-1DCAEoggI46AdIM1gEaLUBiAEBmAEJuAEXyAEM2AED6AEBiAIBqAIDuAL6ipyWBsACAdICJGUwYzlkMDEwLTJmZTUtNGJmNC1hYWVhLWMxMmVmNmZkNjg4YdgCBOACAQ&amp;sid=f1f1bdb270788d3f038666e252719f90" method="get" data-component="searchbox/overlays/controller searchbox/destination/near-me searchbox/dynamic-los/dynamic-max-los ">
+                <div class="searchbox_cross_product__wrapper-inner">
+                    <input type="hidden" value="index" name="src">
+                    <input type="hidden" name="rows" value="20">
+                    <input type="hidden" name="error_url" value="https://www.booking.com/index.en-gb.html?label=gen173nr-1DCAEoggI46AdIM1gEaLUBiAEBmAEJuAEXyAEM2AED6AEBiAIBqAIDuAL6ipyWBsACAdICJGUwYzlkMDEwLTJmZTUtNGJmNC1hYWVhLWMxMmVmNmZkNjg4YdgCBOACAQ&amp;sid=f1f1bdb270788d3f038666e252719f90&amp;sb_price_type=total&amp;&amp;">
+                    <input type="hidden" name="label" value="gen173nr-1DCAEoggI46AdIM1gEaLUBiAEBmAEJuAEXyAEM2AED6AEBiAIBqAIDuAL6ipyWBsACAdICJGUwYzlkMDEwLTJmZTUtNGJmNC1hYWVhLWMxMmVmNmZkNjg4YdgCBOACAQ">
+                    <input type="hidden" name="lang" value="en-gb">
+                    <input type="hidden" name="sid" value="f1f1bdb270788d3f038666e252719f90">
+                    <input type="hidden" name="sb" value="1">
+                    <input type="hidden" name="sb_lp" value="1">
+                    <input type="hidden" name="search_form_id" value="f79471d12cf807ff">
+                    <div class="searchbox_cross_product__overlay-mask"></div>
+
+                    <!-- REPLACED these section -->
+                    <div class="searchbox-calendar-bui bui-calendar--vertical" data-calendar="" data-auto-open-checkout-calendar="true" data-custom-los="90" data-calendar-blur="1" data-component="searchbox/calendar/wrapper" data-force-render="1" data-scroll-to-selected-month="1" data-calendar-max-date-possible="500">
+
+                        <input type="hidden" name="checkin_monthday" value="1">
+                        <input type="hidden" name="checkin_year_month" value="2022-8">
+                        <input type="hidden" name="checkout_monthday" value="5">
+                        <input type="hidden" name="checkout_year_month" value="2022-8">
+
+                        <div onclick="ShowDatepickerContainer()" class="searchbox_cross_product__section-container searchbox_cross_product__section-container--double" data-section-overlayed="" data-section-overlayed-calendar-trigger="">
+                            <div class="searchbox_cross_product__section searchbox_cross_product__section--calendar searchbox_cross_product__section--with-labels " data-has-calendar="checkin" data-calendar-section="">
+                                <div class="searchbox_cross_product__section-top" data-section-header="1" aria-labelledby="checkin_date_a11y" role="button" tabindex="0" data-overlay-trigger-on-focus="">
+                                    <div id="ci_date" class=" bar b-no-tap-highlight js-searchbox__input dualcal__checkin " data-action="toggle" data-clicked-before-ready="0" data-cal="checkin">
+                                        <div class="searchbox_cross_product__date">
+                                            <label class="" id="checkin_date_a11y">
+                                                Check-in date
+                                            </label>
+                                            <div id="ci_date_field">
+                                                <span id="ci_date_text" name class="m_cal_date_string js-loading-invisible" style="font-weight:800" data-checkin-text="">Mon 1 Aug 2022</span>
+                                            </div>
+                                            <svg class="bk-icon -fonticon-checkin searchbox-icon" fill="currentColor" height="24" width="24"><use xlink:href="#icon-fonticon-checkin"></use></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="searchbox_cross_product__section searchbox_cross_product__section--calendar searchbox_cross_product__section--with-labels " data-has-calendar="checkout" data-calendar-section="">
+                                <div class="searchbox_cross_product__section-top" data-section-header="1" aria-labelledby="checkout_date_a11y" role="button" tabindex="0" data-overlay-trigger-on-focus="">
+                                    <div id="co_date" class=" bar b-no-tap-highlight js-searchbox__input dualcal__checkout " data-action="toggle" data-clicked-before-ready="0" data-cal="checkout">
+                                        <div class="searchbox_cross_product__date">
+                                            <label class="" id="checkout_date_a11y">
+                                                Check-out date
+                                            </label>
+                                            <div id="co_date_field">
+                                                <span id="co_date_text" class="m_cal_date_string js-loading-invisible " style="font-weight:800" data-checkout-text="">Fri 5 Aug 2022</span>
+                                            </div>
+                                            <svg class="bk-icon -fonticon-checkin searchbox-icon" fill="currentColor" height="24" width="24"><use xlink:href="#icon-fonticon-checkin"></use></svg>
+                                        </div>
+                                        <input type="hidden" id="co_date_input" name="checkout" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="searchbox_cross_product__section-container" onclick="ShowInputContainer()">
+                        <div class="searchbox_cross_product__section searchbox_cross_product__section--groups searchbox_cross_product__section--with-labels" data-component="searchbox/groups/config" data-mandatory-ages-version="2" data-mandatory-ages="1" data-no-children="1">
+                            <div class="searchbox_cross_product__section-top searchbox_cross_product__section-top--flex" data-section-header="1" data-section-overlayed="" data-section-overlayed-groups-trigger="">
+                                <label class="searchbox_cross_product__groups-label searchbox_cross_product__groups-label--adults">
+                                    <div class="searchbox_cross_product__groups-label-text searchbox_cross_product__groups-label-text--adults">Adults</div>
+                                    <select class="bui-form__control searchbox_cross_product__groups-select adults-select" name="group_adults" data-role="guests" style="pointer-events: none;">
+                                        <option value="1">1</option>
+                                        <option selected="selected" value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                    </select>
+                                </label>
+                                <label class="searchbox_cross_product__groups-label searchbox_cross_product__groups-label--children">
+                                    <div class="searchbox_cross_product__groups-label-text">Children</div>
+                                    <select name="group_children" class="bui-form__control searchbox_cross_product__groups-select children-select" data-role="children" style="pointer-events: none;">
+                                        <option selected="selected" value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </label>
+                                <label class="searchbox_cross_product__groups-label">
+                                    <div class="searchbox_cross_product__groups-label-text">Rooms</div>
+                                    <select class="bui-form__control searchbox_cross_product__groups-select room-select" name="no_rooms" data-role="rooms" style="pointer-events: none;">
+                                        <option selected="selected" value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="searchbox_cross_product__overlay--groups" data-section-overlayed-groups="" data-slide-up="" role="dialog" aria-label="Select guests/rooms">
+                                <div class="searchbox_cross_product__overlay-container">
+                                    <div class="searchbox_cross_product__overlay-header">
+                                        <span class="searchbox_cross_product__overlay-close" data-section-overlay-apply="" tabindex="0" role="button" aria-label="Close" data-et-click="customGoal:INFdCDVZMYCAZbGcINNDaeKe:4"><svg aria-hidden="true" class="bk-icon -iconset-close" fill="#BDBDBD" height="24" width="24"><use xlink:href="#icon-iconset-close"></use></svg></span>
+                                    </div>
+                                    <div class="searchbox_cross_product__overlay-footer">
+                                        <div class="group-prompt-child-ages">Add the correct age for each child in your group</div>
+                                        <button class="bui-button bui-button--primary" type="button" data-section-overlay-apply="" data-et-click="customGoal:INFdCDVZMYCAZbGcINNDaeKe:3">
+                                            <span class="bui-button__text">
+                                                Done
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="searchbox_cross_product__overlay-content">
+                                    <div class="searchbox_cross_product__overlay-content-inner">
+                                        <div class="searchbox_cross_product__section-group">
+                                            <div class="bui-stepper" data-bui-component="InputStepper">
+                                                <div class="bui-stepper__title-wrapper">
+                                                    <label class="bui-stepper__title" for="group_adults_overlay">Adults</label>
+                                                </div>
+                                                <div class="bui-stepper__wrapper">
+                                                    <input type="range" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="group_adults_overlay" name="group_adults_overlay" min="1" max="30" value="2" data-role="guests" aria-valuenow="2">
+                                                    <button class="bui-button bui-button--secondary bui-stepper__subtract-button" data-bui-ref="input-stepper-subtract-button" type="button" aria-hidden="true">
+                                                        <span class="bui-button__text">-</span>
+                                                    </button>
+                                                    <span class="bui-stepper__display" aria-hidden="true" data-bui-ref="input-stepper-value">2</span>
+                                                    <button class="bui-button bui-button--secondary bui-stepper__add-button" data-bui-ref="input-stepper-add-button" type="button" aria-hidden="true">
+                                                        <span class="bui-button__text">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="searchbox_cross_product__section-group">
+                                            <div class="bui-stepper" data-bui-component="InputStepper">
+                                                <div class="bui-stepper__title-wrapper">
+                                                    <label class="bui-stepper__title" for="group_children_overlay">Children</label>
+                                                </div>
+                                                <div class="bui-stepper__wrapper">
+                                                    <input type="range" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="group_children_overlay" name="group_children_overlay" min="0" max="10" value="0" data-role="children" aria-valuenow="0">
+                                                    <button class="bui-button bui-button--secondary bui-stepper__subtract-button" data-bui-ref="input-stepper-subtract-button" type="button" aria-hidden="true" disabled="true">
+                                                        <span class="bui-button__text">-</span>
+                                                    </button>
+                                                    <span class="bui-stepper__display" aria-hidden="true" data-bui-ref="input-stepper-value">0</span>
+                                                    <button class="bui-button bui-button--secondary bui-stepper__add-button" data-bui-ref="input-stepper-add-button" type="button" aria-hidden="true">
+                                                        <span class="bui-button__text">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="searchbox_cross_product__section-group-children">
+                                            <label class=" js-child-ages-label" data-children-ages-label="" style="display: none;">Age of child at check-out</label>
+                                            <p>
+                                                Add correct ages to see tailored options and prices
+                                            </p>
+                                            <div class="searchbox_cross_product__section-children-ages  js-child-ages" data-section-children="1" style="display: none;">
+                                            </div>
+                                        </div>
+                                        <div class="searchbox_cross_product__section-group">
+                                            <div class="bui-stepper" data-bui-component="InputStepper">
+                                                <div class="bui-stepper__title-wrapper">
+                                                    <label class="bui-stepper__title" for="no_rooms_overlay">Rooms</label>
+                                                </div>
+                                                <div class="bui-stepper__wrapper">
+                                                    <input type="range" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="no_rooms_overlay" name="no_rooms_overlay" min="1" max="30" value="1" data-role="rooms" aria-valuenow="1">
+                                                    <button class="bui-button bui-button--secondary bui-stepper__subtract-button" data-bui-ref="input-stepper-subtract-button" type="button" aria-hidden="true" disabled="true">
+                                                        <span class="bui-button__text">-</span>
+                                                    </button>
+                                                    <span class="bui-stepper__display" aria-hidden="true" data-bui-ref="input-stepper-value">1</span>
+                                                    <button class="bui-button bui-button--secondary bui-stepper__add-button" data-bui-ref="input-stepper-add-button" type="button" aria-hidden="true">
+                                                        <span class="bui-button__text">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <template id="sb-age-option-container">
+                        <div class="age_option-container  js-age-option-container">
+                            <select name="age" class="age">
+                                <option value="" selected="">
+                                    Age needed
+                                </option>
+                                <option value="0">
+                                    0 years old
+                                </option>
+                                <option value="1">
+                                    1 year old
+                                </option>
+                                <option value="2">
+                                    2 years old
+                                </option>
+                                <option value="3">
+                                    3 years old
+                                </option>
+                                <option value="4">
+                                    4 years old
+                                </option>
+                                <option value="5">
+                                    5 years old
+                                </option>
+                                <option value="6">
+                                    6 years old
+                                </option>
+                                <option value="7">
+                                    7 years old
+                                </option>
+                                <option value="8">
+                                    8 years old
+                                </option>
+                                <option value="9">
+                                    9 years old
+                                </option>
+                                <option value="10">
+                                    10 years old
+                                </option>
+                                <option value="11">
+                                    11 years old
+                                </option>
+                                <option value="12">
+                                    12 years old
+                                </option>
+                                <option value="13">
+                                    13 years old
+                                </option>
+                                <option value="14">
+                                    14 years old
+                                </option>
+                                <option value="15">
+                                    15 years old
+                                </option>
+                                <option value="16">
+                                    16 years old
+                                </option>
+                                <option value="17">
+                                    17 years old
+                                </option>
+                            </select>
+                            <svg class="bk-icon -iconset-dropdown" fill="#0071C2" height="16" width="16"><use xlink:href="#icon-iconset-dropdown"></use></svg>
+                        </div>
+                    </template>
+                    <div data-et-view=""></div>
+                    <div data-visible="accommodation,flights" class="col-12 col-sm-12 col-md-6 col-lg-2"
+                         data-component="search/group/group-with-modal" data-sb-id="main" tabindex="0" style="padding-left:5px;padding-right:4px">
+                        <div data-component="xp-index/guest-errors" data-sb-id="main" data-view-id="accommodation" role="alert">
+                        </div>
+                        <label id="xp__guests__toggle" for="xp__guests__input" onclick="toggleView('Locations')"
+                               class="xp__input xp__location__toggle" data-group-toggle="Locations" role="button"
+                               aria-expanded="false" aria-controls="Locations" style="border-radius:4px">
+                            <span class="invisible_spoken">Locations</span>
+                            <span class="xp__guests__count">
+                                <span id="PropertyIdLabel" style="font-weight:bolder">Naran</span>
+
+                                <input type="hidden" id="PropertyId" value="1" />
+                            </span>
+                        </label>
+
+                        <div id="Locations" class="xp__guests__inputs focussable" data-group-modal="" style="display: none;" role="region" aria-label="Locations">
+                            <div data-component="search/group/group">
+                                <div class="u-clearfix" data-render="">
+                                    <div class="sb-group__field sb-group-children selected" onclick="selectLocation('1', 'Naran')">
+
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title">Naran</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sb-group__field sb-group__field-adults" onclick="selectLocation('0', 'All')">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title">All</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sb-group__field sb-group__field-adults">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title" href="#" onclick="selectLocation('2', 'Islamabad')">Islamabad</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="sb-group__field sb-group__field-adults" onclick="selectLocation('3', 'Skardu')">
+                                        <div class="bui-stepper" data-bui-component="InputStepper">
+                                            <div class="bui-stepper__title-wrapper">
+                                                <a class="bui-stepper__title">Skardu</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="submit_search" onclick="SearchResults()" style="background-color: #01444a;border:0px;color:#fff" type="button" class="sb-searchbox__button" title="Search hotels" data-et-click="customGoal:cCHObAURAfVaeYPZZZECVVDJdDBKWPHDDWe:2   customGoal:cCHObTRVDEZRdPQBcGCfTKYCccaT:1 goal:mdot_index_search_button_click  ">
+                        <span class="js-sb-submit-text ">
+                            Search
+                        </span>
+                    </button>
+                </div>
+                <input type="hidden" name="lpsr" value="1">
+            </form>
+
+            @*}*@
+        </div>
+        <div id="DatepickerOverlay" style="display:none;width:100%;height:100%;position:fixed;background:black;opacity:0.5;top:0;left:0;z-index:1031;">
+        </div>
+        <div id="DatepickerContainer" class="xp__guests__inputs focussable " data-group-modal="" style="display: none; position: fixed; width: 100%; z-index: 1111111; top: unset; bottom: -60%; left: 0px; color: black !important; padding: 16px; " role="region" aria-label="Rooms and occupancy">
+            <div data-component="search/group/group" class="" data-sb-id="main" data-sb-width="medium" data-sb-bbtool-searchbox="0" data-sb-group-children-hide="0" data-sb-group-children-ages-hide="0" data-sb-group-infants-hide="1" data-sb-group-pets-hide="0" data-sb-group-rooms-hide="0" data-sb-group-block-labels="0" data-sb-group-use_adults_label="0" data-sb-group-always-expanded="0" data-sb-group-use-bui-stepper="1" data-sb-group-bui-steppers-accessible="1" data-fe_sb_group_descriptive_dropdowns="0" data-fe_sb_universal_design="0" data-fe_sb_xpi="1" data-fe_remove_duplicate_ids="0" data-fe_sb_unique_id="" data-sb_reorder_rooms_block="1" data-sb-facelift="0" data-fe_sb_show_children_age_bracket="1" data-fe_sb_mandatory_child_ages="1" data-fe_sb_child_ages_ui_update="0" data-fe_sb_dont_use_default_child_age="1">
+                <div style="text-align: right; font-weight: 100; font-size: 22px; padding-bottom: 9px;">
+                    <i onclick="HideDatepickerContainer()" style="cursor:pointer" class="fa fa-close"></i>
+                </div>
+
+                <div class="u-clearfix" data-render="">
+                    <div id="DatepickerParentEl">
+                        <input id="MobileDaterangePicker" type="text" style="height:0;" name="daterange" class="xp__input" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="InputOverlay" style="display:none;width:100%;height:100%;position:fixed;background:black;opacity:0.5;top:0;left:0;z-index:1031;">
+        </div>
+        <div id="InputContainer" class="xp__guests__inputs focussable " data-group-modal="" style="display: none; position: fixed; width: 100%; z-index: 1111111; top: unset; bottom: 0px; left: 0px; color: black !important; padding: 16px;" role="region" aria-label="Rooms and occupancy">
+            <div data-component="search/group/group" data-sb-id="main" data-sb-width="medium" data-sb-bbtool-searchbox="0" data-sb-group-children-hide="0" data-sb-group-children-ages-hide="0" data-sb-group-infants-hide="1" data-sb-group-pets-hide="0" data-sb-group-rooms-hide="0" data-sb-group-block-labels="0" data-sb-group-use_adults_label="0" data-sb-group-always-expanded="0" data-sb-group-use-bui-stepper="1" data-sb-group-bui-steppers-accessible="1" data-fe_sb_group_descriptive_dropdowns="0" data-fe_sb_universal_design="0" data-fe_sb_xpi="1" data-fe_remove_duplicate_ids="0" data-fe_sb_unique_id="" data-sb_reorder_rooms_block="1" data-sb-facelift="0" data-fe_sb_show_children_age_bracket="1" data-fe_sb_mandatory_child_ages="1" data-fe_sb_child_ages_ui_update="0" data-fe_sb_dont_use_default_child_age="1">
+                <div style="text-align: right; font-weight: 100; font-size: 22px; padding-bottom: 9px;">
+                    <i onclick="HideInputContainer()" style="cursor:pointer" class="fa fa-close"></i>
+                </div>
+                <div class="u-clearfix" data-render="">
+                    <div class="sb-group__field sb-group__field-adults">
+                        <div class="bui-stepper" data-bui-component="InputStepper">
+                            <div class="bui-stepper__title-wrapper">
+                                <label class="bui-stepper__title" for="group_adults">Adults</label>
+                            </div>
+                            <div class="bui-stepper__wrapper sb-group__stepper-a11y">
+                                <input style="display: none" type="number" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="group_adults" name="group_adults" min="1" max="30" value="2" data-group-adults-count="">
+                                <button class="bui-button bui-button--secondary bui-stepper__subtract-button " onclick="CalculateMinusAdult()" data-bui-ref="input-stepper-subtract-button" type="button" aria-label="Decrease number of Adults" aria-describedby="group_adults_desc">
+                                    <span class="bui-button__text">−</span>
+                                </button>
+                                <span class="bui-stepper__display" data-bui-ref="input-stepper-value" id="AdultValue" aria-hidden="true" data-value="">1</span>
+                                <button class="bui-button bui-button--secondary bui-stepper__add-button " onclick="CalculatePlusAdult()" data-bui-ref="input-stepper-add-button" type="button" aria-label="Increase number of Adults" aria-describedby="group_adults_desc">
+                                    <span class="bui-button__text">+</span>
+                                </button>
+                                <span class="bui-u-sr-only" aria-live="assertive" id="group_adults_desc">2 Adults</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sb-group__field sb-group-children ">
+                        <div class="bui-stepper" data-bui-component="InputStepper">
+                            <div class="bui-stepper__title-wrapper" style="text-align: left;">
+                                <label class="bui-stepper__title" for="group_children" style="text-align: left;">Children</label>
+                                <span class="bui-stepper__subtitle">Ages 0 – 17</span>
+                            </div>
+                            <div class="bui-stepper__wrapper sb-group__stepper-a11y">
+                                <input style="display: none" type="number" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="group_children" name="group_children" min="0" max="10" value="2" data-group-children-count="">
+                                <button class="bui-button bui-button--secondary bui-stepper__subtract-button " onclick="CalculateMinusChildren()" data-bui-ref="input-stepper-subtract-button" type="button" aria-label="Decrease number of Children" aria-describedby="group_children_desc">
+                                    <span class="bui-button__text">−</span>
+                                </button>
+                                <span class="bui-stepper__display" data-bui-ref="input-stepper-value" id="ChildValue" aria-hidden="true">0</span>
+                                <button class="bui-button bui-button--secondary bui-stepper__add-button " onclick="CalculatePlusChildren()" data-bui-ref="input-stepper-add-button" type="button" aria-label="Increase number of Children" aria-describedby="group_children_desc">
+                                    <span class="bui-button__text">+</span>
+                                </button>
+                                <span class="bui-u-sr-only" aria-live="assertive" id="group_children_desc">2 Children</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer" style="display:none">
+                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                <option class="sb_child_ages_empty_zero" value="">
+                                    Age needed
+                                </option>
+                                <option value="0">
+                                    0 years old
+                                </option>
+                                <option value="1">
+                                    1 year old
+                                </option>
+                                <option value="2">
+                                    2 years old
+                                </option>
+                                <option value="3">
+                                    3 years old
+                                </option>
+                                <option value="4">
+                                    4 years old
+                                </option>
+                                <option value="5">
+                                    5 years old
+                                </option>
+                                <option value="6">
+                                    6 years old
+                                </option>
+                                <option value="7">
+                                    7 years old
+                                </option>
+                                <option value="8">
+                                    8 years old
+                                </option>
+                                <option value="9">
+                                    9 years old
+                                </option>
+                                <option value="10" selected="">
+                                    10 years old
+                                </option>
+                                <option value="11">
+                                    11 years old
+                                </option>
+                                <option value="12">
+                                    12 years old
+                                </option>
+
+                            </select>
+
+
+                        </div>
+                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer2" style="display:none">
+                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                <option class="sb_child_ages_empty_zero" value="">
+                                    Age needed
+                                </option>
+                                <option value="0">
+                                    0 years old
+                                </option>
+                                <option value="1">
+                                    1 year old
+                                </option>
+                                <option value="2">
+                                    2 years old
+                                </option>
+                                <option value="3">
+                                    3 years old
+                                </option>
+                                <option value="4">
+                                    4 years old
+                                </option>
+                                <option value="5">
+                                    5 years old
+                                </option>
+                                <option value="6">
+                                    6 years old
+                                </option>
+                                <option value="7">
+                                    7 years old
+                                </option>
+                                <option value="8">
+                                    8 years old
+                                </option>
+                                <option value="9">
+                                    9 years old
+                                </option>
+                                <option value="10" selected="">
+                                    10 years old
+                                </option>
+                                <option value="11">
+                                    11 years old
+                                </option>
+                                <option value="12">
+                                    12 years old
+                                </option>
+
+                            </select>
+
+                        </div>
+                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer3" style="display:none">
+                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                <option class="sb_child_ages_empty_zero" value="">
+                                    Age needed
+                                </option>
+                                <option value="0">
+                                    0 years old
+                                </option>
+                                <option value="1">
+                                    1 year old
+                                </option>
+                                <option value="2">
+                                    2 years old
+                                </option>
+                                <option value="3">
+                                    3 years old
+                                </option>
+                                <option value="4">
+                                    4 years old
+                                </option>
+                                <option value="5">
+                                    5 years old
+                                </option>
+                                <option value="6">
+                                    6 years old
+                                </option>
+                                <option value="7">
+                                    7 years old
+                                </option>
+                                <option value="8">
+                                    8 years old
+                                </option>
+                                <option value="9">
+                                    9 years old
+                                </option>
+                                <option value="10" selected="">
+                                    10 years old
+                                </option>
+                                <option value="11">
+                                    11 years old
+                                </option>
+                                <option value="12">
+                                    12 years old
+                                </option>
+
+                            </select>
+
+                        </div>
+                        <div class="sb-group__children__field clearfix col-6" id="AgeEntryContainer4" style="display:none">
+                            <select name="age" data-group-child-age="0" aria-label="Child 1 age">
+                                <option class="sb_child_ages_empty_zero" value="">
+                                    Age needed
+                                </option>
+                                <option value="0">
+                                    0 years old
+                                </option>
+                                <option value="1">
+                                    1 year old
+                                </option>
+                                <option value="2">
+                                    2 years old
+                                </option>
+                                <option value="3">
+                                    3 years old
+                                </option>
+                                <option value="4">
+                                    4 years old
+                                </option>
+                                <option value="5">
+                                    5 years old
+                                </option>
+                                <option value="6">
+                                    6 years old
+                                </option>
+                                <option value="7">
+                                    7 years old
+                                </option>
+                                <option value="8">
+                                    8 years old
+                                </option>
+                                <option value="9">
+                                    9 years old
+                                </option>
+                                <option value="10" selected="">
+                                    10 years old
+                                </option>
+                                <option value="11">
+                                    11 years old
+                                </option>
+                                <option value="12">
+                                    12 years old
+                                </option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="sb-group__field">
+                        <div class="bui-stepper" data-bui-component="InputStepper">
+                            <div class="bui-stepper__title-wrapper">
+                                <label class="bui-stepper__title" for="no_rooms">Rooms</label>
+                            </div>
+                            <div class="bui-stepper__wrapper sb-group__stepper-a11y">
+                                <input style="display: none" type="number" class="bui-stepper__input" data-bui-ref="input-stepper-field" id="no_rooms" name="no_rooms" min="1" max="30" value="1" data-group-rooms-count="">
+                                <button class="bui-button bui-button--secondary bui-stepper__subtract-button sb-group__stepper-button-disabled" onclick="CalculateMinusRooms()" data-bui-ref="input-stepper-subtract-button" type="button" aria-label="Decrease number of Rooms" aria-describedby="no_rooms_desc">
+                                    <span class="bui-button__text">−</span>
+                                </button>
+                                <span class="bui-stepper__display" data-bui-ref="input-stepper-value" id="RoomValue" aria-hidden="true">1</span>
+                                <button class="bui-button bui-button--secondary bui-stepper__add-button " data-bui-ref="input-stepper-add-button" onclick="CalculatePlusRooms()" type="button" aria-label="Increase number of Rooms" aria-describedby="no_rooms_desc">
+                                    <span class="bui-button__text">+</span>
+                                </button>
+                                <span class="bui-u-sr-only" aria-live="assertive" id="no_rooms_desc">1 Rooms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <button class="bui-button bui-button--primary" onclick="HideInputContainer()" style="width:100%" type="button">
+                    <span class="bui-button__text">
+                        Done
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="content-area featured-properties bg-white">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title-2">
+            <h2>
+                Book Luxury Rooms at
+                <span>Mount Feast Hotel Naran</span>
+            </h2>
+            <p>
+                Indulge in comfort and luxury with our meticulously designed rooms with a view, each offering a
+                cosy sanctuary amidst the stunning natural beauty of Naran Kaghan Valley. From spacious suites to
+                intimate twin rooms, our accommodations cater to every traveller’s needs. Enjoy modern amenities,
+                breathtaking views, and personalized service throughout your stay in Naran, ensuring a truly memorable
+                experience at Mount Feast Hotel.
+            </p>
+            <div class="title-border">
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+            </div>
+        </div>
+        <div class="row wow fadeInUp delay-04s">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="property-3">
+                    <img src="~/Content/Assets/img/properties/DeluxeMF.png" alt="photo" class="img-fluid w-100">
+                    <div class="featured-tag2">Hot Selling</div>
+                    <div class="ling-section">
+                        <h3><a href="">Deluxe</a></h3>
+                        <ul class="facilities-list">
+                            <li>Parking</li>
+                            <li>Breakfast</li>
+                            <li>Wifi</li>
+                            <li>Balcony</li>
+                        </ul>
+                        <a href="" class="read-more-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="property-3">
+                    <img src="~/Content/Assets/img/properties/ExecutiveMF.png" alt="photo" class="img-fluid w-100">
+                    <div class="featured-tag2">Hot Selling</div>
+                    <div class="ling-section">
+                        <h3><a href="">Executive</a></h3>
+                        <ul class="facilities-list">
+                            <li>Parking</li>
+                            <li>Breakfast</li>
+                            <li>Wifi</li>
+                            <li>Balcony</li>
+                        </ul>
+                        <a href="" class="read-more-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="property-3">
+                    <img src="~/Content/Assets/img/properties/QuadMF.png" alt="photo" class="img-fluid w-100">
+                    <div class="featured-tag2">Hot Selling</div>
+                    <div class="ling-section">
+                        <h3><a href="">Quad</a></h3>
+                        <ul class="facilities-list">
+                            <li>Parking</li>
+                            <li>Breakfast</li>
+                            <li>Wifi</li>
+                            <li>Balcony</li>
+                        </ul>
+                        <a href="" class="read-more-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="property-3">
+                    <img src="~/Content/Assets/img/properties/Triplet MF.png" alt="photo" class="img-fluid w-100">
+                    <div class="featured-tag2">Hot Selling</div>
+                    <div class="ling-section">
+                        <h3><a href="">Triplet</a></h3>
+                        <ul class="facilities-list">
+                            <li>Parking</li>
+                            <li>Breakfast</li>
+                            <li>Wifi</li>
+                            <li>Balcony</li>
+                        </ul>
+                        <a href="" class="read-more-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="property-3">
+                    <img src="~/Content/Assets/img/properties/Presidential MF.png" alt="photo" class="img-fluid w-100">
+                    <div class="featured-tag2">Hot Selling</div>
+                    <div class="ling-section">
+                        <h3><a href="">Presidential</a></h3>
+                        <ul class="facilities-list">
+                            <li>Parking</li>
+                            <li>Breakfast</li>
+                            <li>Wifi</li>
+                            <li>Balcony</li>
+                        </ul>
+                        <a href="" class="read-more-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="property-3">
+                    <img src="~/Content/Assets/img/properties/ExecutiveMF.png" alt="photo" class="img-fluid w-100">
+                    <div class="featured-tag2">Hot Selling</div>
+                    <div class="ling-section">
+                        <h3><a href="">Executive</a></h3>
+                        <ul class="facilities-list">
+                            <li>Parking</li>
+                            <li>Breakfast</li>
+                            <li>Wifi</li>
+                            <li>Balcony</li>
+                        </ul>
+                        <a href="" class="read-more-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="text-center">
+            <a class="btn btn-danger" href="@Url.Action("Index","Gallery")">View Gallery</a>
+        </div>
+    </div>
+</div>
+<div class="services content-area">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title-2">
+            <h2>
+                Mount Feast Hotel - <span>4 Star Hotel At Naran</span>
+            </h2>
+            <p>
+                Feel like royalty as you relax in your presidential suite at our hotel in Naran.
+
+            </p>
+            <div class="title-border ">
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-info-2 df-box">
+
+                    <div>
+                        <h5>
+                            Best Hotel Rates at Naran Kaghan Valley
+                        </h5>
+                        <p>
+                            At Mount Feast Hotel Naran, we believe in providing exceptional value for your money.
+                            Enjoy competitive hotel rates and unbeatable deals on accommodation, ensuring that you get
+                            the most out of your Naran Kaghan experience without breaking the bank. With our transparent
+                            hotel pricing and flexible booking options, planning your stay at Mount Feast Hotel
+                            is easy and hassle-free.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-info-2 df-box">
+
+                    <div>
+
+                        <h5>Online Hotel Booking Naran</h5>
+                        <p>
+                            Experience convenience with our seamless online hotel booking in Naran. Simply
+                            visit our website, select your desired dates and room category, and complete your
+                            reservation with ease. With instant confirmation and secure payment options, booking
+                            your stay at Mount Feast Hotel has never been simpler. Our online booking platform
+                            makes it effortless to secure your accommodations in Naran Valley.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-info-2 df-box">
+
+                    <div>
+
+                        <h5>
+                            Quality Services
+                        </h5>
+                        <p>
+                            At Mount Feast Hotel Naran, we are dedicated to delivering <a href="/restaurant">exceptional hospitality</a> that exceeds expectations. Whether it’s 24/7 room service, concierge assistance, or arranging local transport and guided tours to nearby attractions, our goal is to make your stay as smooth and enjoyable as possible. Our professional team blends international service standards ensuring every guest leaves with cherished memories.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center">
+            <a class="btn btn-danger" href="@Url.Action("Index","AboutUs")">About Naran</a>
+        </div>
+    </div>
+</div>
+
+<div class="counters-3 " id="background-container" style="padding: 0px">
+    <div class="counter_text text-center">
+        <h2 class="px-2">
+            Popular Activities in Naran – Explore the Beauty Beyond Your Room
+
+        </h2>
+        <p class="px-2">
+            Discover unforgettable adventures and thrilling experiences just moments away from Mount Feast Hotel Naran. From nature trails to thrilling jeep rides, Naran has it all!
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 align-self-center wow fadeInLeft delay-04s">
+                <div class="sec-title-three changing_title">
+                    <div class="main-title main-title-5 mb-0" style="position:relative; z-index: 2;">
+                        <h2 id="dynamic-title" style="color:#fff">Visit Babusar Top </h2>
+                        <p id="dynamic-description">Touch the Clouds</p>
+                        <div class="mt-2">
+                            <span class="left">
+                                <a href="#" class="btn read-more discover_btn rounded-pill">Discover More</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 wow fadeInRight delay-04s" style="padding-top:20px">
+                <div class="popular-places comon-slick">
+                    <div>
+                        <div class="slick row wow fadeInUp delay-04s" data-slick='{
+    "slidesToShow": 3,
+    "slidesToScroll": 1,
+    "infinite": true,
+    "autoplay": true,
+    "autoplaySpeed": 3000,
+    "responsive": [
+        {
+            "breakpoint": 1024,
+            "settings": {
+                "slidesToShow": 2
+            }
+        },
+        {
+            "breakpoint": 768,
+            "settings": {
+                "slidesToShow": 1
+            }
+        }
+    ]
+}'>
+                            <div class="item" data-title="Horse Riding at Siri Paye Meadows " data-description="A Green Paradise" data-bg="/Content/Assets/img/popular-places/1.png">
+                                <div class="popular-places-box-2">
+                                    <img src="~/Content/Assets/img/popular-places/SiriPaye.png" alt="photo" class="img-fluid w-100">
+                                    <div class="ling-section">
+                                        <h3><a href="">Siri Paye</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" data-title="Visit Babusar Top " data-description="Touch the Clouds" data-bg="/Content/Assets/img/popular-places/2.png">
+                                <div class="popular-places-box-2">
+                                    <img src="~/Content/Assets/img/popular-places/BabusarTop.png" alt="photo" class="img-fluid w-100">
+                                    <div class="ling-section">
+                                        <h3><a href="">Babusar Top</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" data-title="Local Bazaars " data-description="Culture, Crafts & Cuisine" data-bg="/Content/Assets/img/popular-places/Naranbazar_bg.png">
+                                <div class="popular-places-box-2">
+                                    <img src="~/Content/Assets/img/popular-places/Naranbazar.png" alt="photo" class="img-fluid w-100">
+                                    <div class="ling-section">
+                                        <h3><a href="">Local Bazaars </a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" data-title="Shogran Excursion " data-description="A Hilltop Heaven" data-bg="/Content/Assets/img/popular-places/4.png">
+                                <div class="popular-places-box-2">
+                                    <img src="~/Content/Assets/img/popular-places/Shogran.png" alt="photo" class="img-fluid w-100">
+                                    <div class="ling-section">
+                                        <h3><a href="">Shogran</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" data-title="Kunhar River Rafting " data-description="Ride the Rapids" data-bg="/Content/Assets/img/popular-places/5.png">
+                                <div class="popular-places-box-2">
+                                    <img src="~/Content/Assets/img/popular-places/Lulusar.png" alt="photo" class="img-fluid w-100">
+                                    <div class="ling-section">
+                                        <h3><a href="">Kunhar River Rafting</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" data-title="Trout Fishing  " data-description="A Relaxing Outdoor Delight" data-bg="/Content/Assets/img/popular-places/Fishing_bg.png">
+                                <div class="popular-places-box-2">
+                                    <img src="~/Content/Assets/img/popular-places/Fishing.png" alt="photo" class="img-fluid w-100">
+                                    <div class="ling-section">
+                                        <h3><a href="">Trout Fishing </a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" data-title="Bonfire Nights at Mount Feast " data-description="Memories Under the Stars" data-bg="/Content/Assets/img/popular-places/bonfire_bg.png">
+                                <div class="popular-places-box-2">
+                                    <img src="~/Content/Assets/img/popular-places/bonfire_night.png" alt="photo" class="img-fluid w-100">
+                                    <div class="ling-section">
+                                        <h3><a href="">Bonfire Nights at Mount Feast  </a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End of slick -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popular-places pp2 content-area-12 bg-white">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title-2">
+            <h2>
+                Popular Places to Visit in
+                <span> Naran Kaghan</span> Valley
+            </h2>
+            <p>
+                Embark on a journey of discovery as you explore the captivating <a href="/places-to-visit-in-Naran">attractions of Naran Kaghan Valley</a>. From the pristine
+                waters of Saif-ul-Mulook Lake to the lush greenery of Lalazar Valley, each destination promises breathtaking vistas and
+                unforgettable experiences. Whether you're trekking through the rugged terrain of Babusar Top or marvelling at the majestic
+                beauty of Ansoo Lake, Naran Kaghan Valley offers a wealth of natural wonders waiting to be explored.
+            </p>
+            <div class="title-border d-inline-flex">
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+            </div>
+            <ul class="list-inline-listing filters filters-listing-navigation mb-2 text-center d-none">
+                <li class="active btn filtr-button filtr" data-filter="M" onclick="showCategory('M')">Naran</li>
+            </ul>
+        </div>
+        <div class="row g-0 active" data-category="M" id="Naran">
+            <div class="col-lg-4 col-md-12 col-sm-12 wow fadeInLeft delay-04s col-pad" data-category="M">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-12" data-category="M">
+                        <div class="popular-places-box">
+                            <div class="popular-places-overflow">
+                                <div class="popular-places-photo">
+                                    <img class="img-fluid w-100" src="~/Content/Assets/img/popular-places/Siri Paye.jpg" alt="popular-places">
+                                </div>
+                            </div>
+                            <div class="ling">
+                                <div class="ling-section">
+                                    <h3>
+                                        <a href="https://maps.app.goo.gl/99mXJwjHBArqmHuj9">Siri Paye</a>
+                                        <span class="float-end">56 Km Away</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-6 col-sm-12" data-category="M">
+                        <div class="popular-places-box">
+                            <div class="popular-places-overflow">
+                                <div class="popular-places-photo">
+                                    <img class="img-fluid w-100" src="~/Content/Assets/img/popular-places/Babusar-top.jpg" alt="popular-places">
+                                </div>
+                            </div>
+                            <div class="ling">
+                                <div class="ling-section">
+                                    <h3>
+                                        <a href="https://goo.gl/maps/zz8aVnQJonhXqqYa9">Babusar Top</a>
+                                        <span class="float-end">68 Km Away</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 wow fadeInUp delay-04s col-pad" data-category="M">
+                <div class="popular-places-box">
+                    <div class="popular-places-overflow">
+                        <div class="popular-places-photo">
+                            <img class="img-fluid w-100 big" src="~/Content/Assets/img/popular-places/Saif-ul-Mulk.jpg" alt="popular-places">
+                        </div>
+                    </div>
+                    <div class="ling">
+                        <div class="ling-section">
+                            <h3>
+                                <a href="https://goo.gl/maps/JiCRVTMXuxFQvKZeA">Saif-Ul-Muluk</a>
+                                <span class="float-end">12 Km Away</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 wow fadeInRight delay-04s col-pad" data-category="M">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" data-category="M">
+                        <div class="popular-places-box">
+                            <div class="popular-places-overflow">
+                                <div class="popular-places-photo">
+                                    <img class="img-fluid w-100" src="~/Content/Assets/img/popular-places/Shogran.jpg" alt="popular-places">
+                                </div>
+                            </div>
+                            <div class="ling">
+                                <div class="ling-section">
+                                    <h3>
+                                        <a href="https://goo.gl/maps/FATQknqsT99SVdfN8">Shogran</a>
+                                        <span class="float-end">63 Km Away</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" data-category="M">
+                        <div class="popular-places-box">
+                            <div class="popular-places-overflow">
+                                <div class="popular-places-photo">
+                                    <img class="img-fluid w-100" src="~/Content/Assets/img/popular-places/Lulusar-Lake.jpg" alt="popular-places">
+                                </div>
+                            </div>
+                            <div class="ling">
+                                <div class="ling-section">
+                                    <h3>
+                                        <a href="https://goo.gl/maps/VRs3ShFMXnmAV6th8">Lulusar Lake</a>
+                                        <span class="float-end">52 Km Away</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row g-0 hidden d-none" data-category="I" id="Islamabad">        </div>
+
+        <div class="row g-0 hidden d-none" data-category="K" id="Skardu"></div>
+
+    </div>
+</div>
+
+
+<div class="our-service-there">
+    <div class="our-service-there-inner">
+        <div class="container">
+            <!-- Main title -->
+
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeInLeft delay-04s">
+                    <div class="bg-service-color">
+                        <div class="services-info-4">
+
+                            <div class="detail">
+                                <h3>
+                                    <a href="/restaurant">Enjoy Authentic Flavours at our Naran Restaurant</a>
+                                </h3>
+                                <p>
+                                    At Mount Feast Hotel Naran, our in-house restaurant brings you the rich taste of local and continental cuisine with a view that’s just as satisfying. Start your day with a complimentary breakfast and enjoy a hearty meal after a day of exploring Naran Valley. Whether it's sizzling BBQ, freshly baked naan, or steaming desi karahi, our culinary team serves comfort food with mountain charm. It’s not just a meal - it’s an experience rooted in flavour and hospitality.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 wow fadeInRight delay-04s">
+                    <div class="cap2 ">
+                        <img src="~/Content/Assets/img/food1.png" alt="avatar-6" style="height:350px;width:550px" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Testimonials 2 -->
+<div class="testimonials-2 comon-slick">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title-2">
+            <h2>
+                Guest
+                <span>Testimonial</span>
+            </h2>
+            <p>
+                Discover the heartfelt experiences of our delighted guests at Mount Feast Hotel Naran. From our luxurious
+                accommodations to our exceptional service, read firsthand testimonials that highlight why our hotel is the top
+                choice for travelers seeking comfort and elegance in the heart
+                of Naran. Let their stories inspire your next unforgettable stay with us.
+            </p>
+            <div class="title-border ">
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+                <div class="title-border-inner"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 wow fadeInRight delay-04s">
+                <div class="slick row comon-slick-inner" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                    <div class="item slide-box">
+                        <div class="testimonials-box">
+                            <div class="detail clearfix">
+                                <P>
+                                    <i class="fa fa-quote-left"></i>
+                                    I stayed in Mount Feast Hotel in Naran it was an amazing experience, the Best environment, Friendly and cooperative staff, and the Best management overall. I highly recommend Mount Feast hotel for a stay in Naran.
+                                    <i class="fa fa-quote-right"></i>
+                                </P>
+                                <div class="user-info d-flex">
+                                    <a class="pr-3" href="https://www.google.com/maps/place/Mount+Feast+Hotel+Naran/34.8867874,73.6396713,15z/data=!4m9!3m8!1s0x38e751f809a0fe3d:0xf3430ac4de399efc!5m2!4m1!1i2!8m2!3d34.8867874!4d73.6396713!16s%2Fg%2F11j2wn511q?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">
+                                        <img src="~/Content/Assets/img/avatar/google review.svg" alt="user" class="flex-shrink-0 me-3">
+                                    </a>
+                                    <div class="detail align-self-center">
+                                        <h5>
+                                            <a>
+                                                Mr. Muhammad Aswad
+                                            </a>
+                                        </h5>
+                                        @*<p>Office Manager</p>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item slide-box">
+                        <div class="testimonials-box">
+                            <div class="detail clearfix">
+                                <P><i class="fa fa-quote-left"></i> The best hotel in Naran regarding cleanliness and courtesy. Beautiful clean rooms and friendly staff. The food was awesome as compared to other restaurants in Naran. Highly recommended to stay in Mount Feast. <i class="fa fa-quote-right"></i></P>
+                                <div class="user-info d-flex">
+                                    <a class="pr-3" href="https://www.google.com/maps/place/Mount+Feast+Hotel+Naran/34.8867874,73.6396713,15z/data=!4m9!3m8!1s0x38e751f809a0fe3d:0xf3430ac4de399efc!5m2!4m1!1i2!8m2!3d34.8867874!4d73.6396713!16s%2Fg%2F11j2wn511q?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">
+                                        <img src="~/Content/Assets/img/avatar/google review.svg" alt="user" class="flex-shrink-0 me-3">
+                                    </a>
+                                    <div class="detail align-self-center">
+                                        <h5>
+                                            <a>
+                                                Mr Atif Aslam
+
+                                            </a>
+                                        </h5>
+                                        @*<p>Creative Director</p>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/HomePage.js"></script>
+

@@ -1,0 +1,176 @@
+﻿@using MountFeastMVC.Models;
+
+@{
+
+    var blog = (List<Post>)TempData["blog"];
+    ViewBag.Title = blog[0].Title;
+    ViewBag.MetaDesciption = blog[0].MetaDescription;
+}
+
+<main>
+
+    <div class="hero medium-height jarallax" data-jarallax data-speed="0.2">
+        <img class="jarallax-img" src="~/Content/paradise/img/restaurant/banner_bg_2.jpg" alt="">
+        <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+            <div class="container">
+                <small class="slide-animated one">@blog[0].PublishedDate - by @blog[0].Author</small>
+                <h1 class="slide-animated two">@blog[0].Title</h1>
+            </div>
+        </div>
+    </div>
+    <!-- /Background Img Parallax -->
+
+    <div class="container margin_120_95">
+        <div class="row justify-content-center">
+            <div class="text-center col-lg-10 my-4">
+                <figure><img src="/uploads/blog/@blog[0].DefaultImage" alt="" class="img-fluid"></figure>
+            </div>
+            <div class="col-lg-8">
+                <div class="box_contents_in">
+
+                    <p>
+                        @Html.Raw(blog[0].Description)
+
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-12 col-xs-12">
+                <div class="sidebar">
+                    <!-- Popular posts start-->
+                    <div class="sidebar-widget popular-posts">
+                        <div class="main-title-2">
+                            <h2><span>Rooms</span> Category</h2>
+                        </div>
+                        <div class="d-flex mb-3 popular-posts-box">
+                            <a class="pr-3" href="https://mountfeasthotel.com/">
+                                <img src="../Content/assets/img/Restaurant/Delxue.jpg"
+                                     alt="small-photo"
+                                     class="flex-shrink-0 me-3" />
+                            </a>
+                            <div class="detail align-self-center">
+                                <h4>
+                                    <a href="https://mountfeasthotel.com/">Deluxe</a>
+                                </h4>
+                                <div class="listing-post-meta">
+                                    Starting From | <a href="#">Rs.10000</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3 popular-posts-box">
+                            <a class="pr-3" href="https://mountfeasthotel.com/">
+                                <img src="../Content/assets/img/Restaurant/Executive.jpg"
+                                     alt="small-photo"
+                                     class="flex-shrink-0 me-3" />
+                            </a>
+                            <div class="detail align-self-center">
+                                <h4>
+                                    <a href="https://mountfeasthotel.com/">Executive Suite</a>
+                                </h4>
+                                <div class="listing-post-meta">
+                                    Starting From | <a href="#">Rs.26000</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3 popular-posts-box">
+                            <a class="pr-3" href="https://mountfeasthotel.com/">
+                                <img src="../Content/assets/img/Restaurant/Executive Room.jpg"
+                                     alt="small-photo"
+                                     class="flex-shrink-0 me-3" />
+                            </a>
+                            <div class="detail align-self-center">
+                                <h4>
+                                    <a href="https://mountfeasthotel.com/">Executive Room</a>
+                                </h4>
+                                <div class="listing-post-meta">
+                                    Starting From | <a href="#">Rs.14000</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3 popular-posts-box">
+                            <a class="pr-3" href="https://mountfeasthotel.com/">
+                                <img src="../Content/assets/img/Restaurant/Quad Room.jpg"
+                                     alt="small-photo"
+                                     class="flex-shrink-0 me-3" />
+                            </a>
+                            <div class="detail align-self-center">
+                                <h4>
+                                    <a href="https://mountfeasthotel.com/">Quad Room</a>
+                                </h4>
+                                <div class="listing-post-meta">
+                                    Starting From | <a href="#">Rs.18000</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3 popular-posts-box">
+                            <a class="pr-3" href="https://mountfeasthotel.com/">
+                                <img src="../Content/assets/img/Restaurant/Triplet Room.jpg"
+                                     alt="small-photo"
+                                     class="flex-shrink-0 me-3" />
+                            </a>
+                            <div class="detail align-self-center">
+                                <h4>
+                                    <a href="https://mountfeasthotel.com/">Triplet Room</a>
+                                </h4>
+                                <div class="listing-post-meta">
+                                    Starting From | <a href="#">Rs.16000</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex popular-posts-box">
+                            <a class="pr-3" href="https://mountfeasthotel.com/">
+                                <img src="../Content/assets/img/Restaurant/Presedential Suite.jpg"
+                                     alt="small-photo"
+                                     class="flex-shrink-0 me-3" />
+                            </a>
+                            <div class="detail align-self-center">
+                                <h4>
+                                    <a href="https://mountfeasthotel.com/">Presidential Suite</a>
+                                </h4>
+                                <div class="listing-post-meta">
+                                    Starting From | <a href="#">RS.34000</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Popular posts end-->
+                    <!-- Social media start -->
+                    <div class="social-media sidebar-widget clearfix">
+                        <!-- Main Title 2 -->
+                        <div class="main-title-2">
+                            <h2><span>Social</span> Media</h2>
+                        </div>
+                        <!-- Social list -->
+                        <ul class="social-list">
+                            <li>
+                                <a href="https://www.facebook.com/mountfeas" class="facebook-bg">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://www.instagram.com/mountfeast" class="google-bg">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Html.Raw("https://www.youtube.com/@mountfeasthotel4999")" class="youtube-bg">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Social media end -->
+                </div>
+            </div>
+        </div>
+        <!--/row -->
+    </div>
+    <!--/container -->
+
+
+    <!--/bg_white -->
+
+</main>

@@ -1,0 +1,99 @@
+﻿@using MountFeastMVC.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    ViewBag.Title = "Mount Feast Hotel at Murree| Rooms Booking";
+    ViewBag.keywords = "Hotel at Murree";
+    ViewBag.Description = "Mount Feast Hotel at Murree is the best place to stay. Our hotel in Murree Pakistan offers luxurious rooms, equipped with all the amenities. Book Online.";
+}
+
+<div class="box-body">
+    <h5 class="callout callout-info">Company Info</h5>
+    <input type="hidden" id="AvoidReload" value="false" />
+
+    <div class="row">
+        <div class="col-md-8 col-xs-12">
+            <form id="companyForm">
+                <input type="hidden" id="Id" name="Id" value="@Model?.Id ?? " " " />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Name">Name:</label>
+                            <input type="text" id="Name" name="Name" class="form-control" value="@(Model?.Name ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Address">Address:</label>
+                            <input type="text" id="Address" name="Address" class="form-control" value="@(Model?.Address ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ContactPerson">Contact Person:</label>
+                            <input type="text" id="ContactPerson" name="ContactPerson" class="form-control" value="@(Model?.ContactPerson ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="OfficialEmail">Official Email:</label>
+                            <input type="email" id="OfficialEmail" name="OfficialEmail" class="form-control" value="@(Model?.OfficialEmail ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ContactNumber1">Contact Number 1:</label>
+                            <input type="text" id="ContactNumber1" name="ContactNumber1" class="form-control" value="@(Model?.ContactNumber1 ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ContactNumber2">Contact Number 2:</label>
+                            <input type="text" id="ContactNumber2" name="ContactNumber2" class="form-control" value="@(Model?.ContactNumber2 ?? "")" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="FacebookAddress">Facebook Address:</label>
+                            <input type="text" id="FacebookAddress" name="FacebookAddress" class="form-control" value="@(Model?.FacebookAddress ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="YoutubeAddress">Youtube Address:</label>
+                            <input type="text" id="YoutubeAddress" name="YoutubeAddress" class="form-control" value="@(Model?.YoutubeAddress ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="InstagramAddress">Instagram Address:</label>
+                            <input type="text" id="InstagramAddress" name="InstagramAddress" class="form-control" value="@(Model?.InstagramAddress ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="LinkedinAddress">Linkedin Address:</label>
+                            <input type="text" id="LinkedinAddress" name="LinkedinAddress" class="form-control" value="@(Model?.LinkedinAddress ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label for="TiktokAddress">Tiktok Address:</label>
+                            <input type="text" id="TiktokAddress" name="TiktokAddress" class="form-control" value="@(Model?.TiktokAddress ?? "")" />
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#companyForm').on('submit', function (event) {
+            
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Save", "Company")',
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        alert('Company information saved successfully!');
+                    } else {
+                        alert('Failed to save company information.');
+                    }
+                }
+            });
+        });
+    });
+</script>

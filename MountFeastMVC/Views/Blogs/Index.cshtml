@@ -1,0 +1,100 @@
+﻿@using MountFeastMVC.Models;
+
+@{
+    ViewBag.Title = "Blog | Best Hotels in Naran | Naran Hotel Booking Deals";
+
+    ViewBag.keywords = "Naran Hotel Booking / Best hotels in Naran ";
+    ViewBag.canonical = "https://mountfeasthotel.com/blog-hotel-naran";
+    ViewBag.Description = "Mount Feast offers great hotel rates. Find the best Naran hotel booking deals and enjoy a relaxing stay at one of the best hotels in Naran. Book today!";
+
+
+
+    var blogs = (List<Post>)ViewBag.blogs;
+
+}
+<div class="sub-banner overview-bgi">
+
+    <div class="overlay">
+        <div class="container">
+            <div class="breadcrumb-area">
+                <h2 style="color:#fff">
+                    Mount Feast Hotels Blog
+                    
+                </h2>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog-body pt-5 pb-5">
+    <div class="container">
+ <div class="main-title-2 mb-4">
+                <h1>
+                    Explore, Discover & Stay Inspired <span>Latest Updates by Mount Feast Hotels </span>
+
+                </h1>
+                <p>
+                   Welcome to the official blog of Mount Feast Hotels – your go-to source for travel inspiration, hotel booking tips, seasonal updates, and exclusive news from our properties in Naran, Skardu, and Islamabad. Whether you're planning your next mountain escape or looking for insider insights, our blog brings you the latest stories and smart travel hacks to make every stay unforgettable. Dive in and stay connected with the world of Mount Feast!
+                </p>
+                <div class="title-border">
+                    <div class="title-border-inner"></div>
+                    <div class="title-border-inner"></div>
+                    <div class="title-border-inner"></div>
+                    <div class="title-border-inner"></div>
+                    <div class="title-border-inner"></div>
+                    <div class="title-border-inner"></div>
+                    <div class="title-border-inner"></div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-9 content-part">
+                @{
+                    foreach (var ro in blogs)
+                    {
+                        // string detailUrl = "/post/" + ro.PostId;
+
+                        string detailUrl = Url.RouteUrl("postDetailRoute", new { postId = ro.PostId, slug = ro.Slug });
+                        <div class="post post-short mb-5 bg-white rounded p-4 pb-3 pt-5">
+                            <div class="post-header">
+                                <div class="post-image">
+                                    <a href="@detailUrl">
+                                        <img src="../uploads/blog/@ro.DefaultImage" alt="" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="main-title-2 mt-4">
+                                <h2><a href="@detailUrl">@ro.Title</a></h2>
+                                <p>
+                                    @ro.PublishedDate, By <a class="fw-bold" style="color: #d11c28">@ro.Author</a>.
+                                </p>
+
+                                <p>
+                                    @ro.ShortDescriptions
+                                </p>
+
+                                <a href="@detailUrl" class="text-decoration-underline fw-bold" style="color: #d11c28; font-size:20px">Read more</a>
+
+                            </div>
+                        </div>
+                    }
+                }
+
+
+            </div>
+            <div class="col-lg-3 col-md-12 col-xs-12 pt-4">
+                <div class="popular-posts">
+
+                    <div class="latest-tweet" style="border-radius: 15px">
+                        <a class="weatherwidget-io" href="https://forecast7.com/en/34d9173d65/naran/" data-label_1="NARAN" data-label_2="WEATHER" data-theme="original" data-basecolor="#fff" data-accent="#EFEFEF" data-textcolor="#000" data-highcolor="#d11c28" data-lowcolor="#000">NARAN WEATHER</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+</script>
